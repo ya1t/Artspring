@@ -1,0 +1,128 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Noto Sans KR', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+  line-height: 1.6;
+}
+
+.container {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin: -12px;
+}
+
+.col {
+  padding: 12px;
+  flex: 1;
+}
+
+.col-1 { flex: 0 0 8.33%; max-width: 8.33%; }
+.col-2 { flex: 0 0 16.66%; max-width: 16.66%; }
+.col-3 { flex: 0 0 25%; max-width: 25%; }
+.col-4 { flex: 0 0 33.33%; max-width: 33.33%; }
+.col-5 { flex: 0 0 41.66%; max-width: 41.66%; }
+.col-6 { flex: 0 0 50%; max-width: 50%; }
+.col-7 { flex: 0 0 58.33%; max-width: 58.33%; }
+.col-8 { flex: 0 0 66.66%; max-width: 66.66%; }
+.col-9 { flex: 0 0 75%; max-width: 75%; }
+.col-10 { flex: 0 0 83.33%; max-width: 83.33%; }
+.col-11 { flex: 0 0 91.66%; max-width: 91.66%; }
+.col-12 { flex: 0 0 100%; max-width: 100%; }
+
+.grid-image {
+  width: 100%; /* 필요에 따라 조정 */
+  height: auto; /* 원본 비율 유지 */
+}
+
+/* 헤더와 푸터의 위아래 간격을 80px로 설정 */
+header, footer {
+  padding: 80px 0;
+  background-color: #f8f8f8;
+  text-align: center;
+}
+
+/* 콘텐츠 섹션 간격을 60px로 설정 */
+main section {
+  padding: 60px 0;
+  border-bottom: 1px solid #ddd; /* 시각적으로 구분을 위해 추가 */
+}
+
+/* 섹션 마지막에 아래쪽 패딩 제거 */
+main section:last-of-type {
+  padding-bottom: 0;
+}
+
+/* 일반 스타일 */
+h1, h2, p {
+  margin: 0 0 20px;
+  padding: 0;
+}
+
+main {
+  padding: 0 20px;
+}
+
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.category-header {
+  background-color: #444;
+  color: white;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.category-item {
+  background-color: white;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.category-item img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.auth-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.auth-buttons a {
+  text-decoration: none;
+  color: #0400db;
+  background-color: #ffffff;
+  padding: 5px 5px;
+  border: solid 1px #0400db;
+  border-radius: 5px;
+  font-size: 12px;
+  font-weight: bold;
+  transition: background-color 0.3s;
+  font-family: 'Noto Sans KR', sans-serif;
+}
+
+.auth-buttons a:hover {
+  background-color: #3333cc;
+  color: #ffffff;
+}
