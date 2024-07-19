@@ -5,7 +5,7 @@ body {
 
 .container {
     width: 100%;
-    max-width: 1440px;
+    max-width: 100%;
     margin: 0 auto;
     position: relative;
     background: white;
@@ -13,57 +13,57 @@ body {
 
 .headerImage {
     width: 100%;
-    height: 726px;
+    height: 50.42%; /* 726px / 1440px * 100 */
     background: #F4F5F6;
     position: relative;
-    top: 93px;
+    top: 6.46%; /* 93px / 1440px * 100 */
     overflow: hidden;
     background-image: url('../images/gradient2.png'); 
     background-position: center;
 }
 
 .promoImage .imageInner {
-    width: 325.50px;
-    height: 255.75px;
+    width: 22.60%; /* 325.50px / 1440px * 100 */
+    height: 17.75%; /* 255.75px / 1440px * 100 */
     background: #777E90;
-    margin: 58.12px;
+    margin: 4.03%; /* 58.12px / 1440px * 100 */
 }
 
 .textSection {
     position: absolute;
-    left: 160px;
-    top: 259px;
+    left: 11.11%; /* 160px / 1440px * 100 */
+    top: 17.99%; /* 259px / 1440px * 100 */
     display: flex;
     flex-direction: column;
-    gap: 52px;
+    gap: 3.61%; /* 52px / 1440px * 100 */
 }
 
 .textContent {
     display: flex;
     flex-direction: column;
-    gap: 32px;
+    gap: 2.22%; /* 32px / 1440px * 100 */
 }
 
 .mainHeading {
-    width: 591px;
-    font-size: 96px;
+    width: 41.04%; /* 591px / 1440px * 100 */
+    font-size: 6.67%; /* 96px / 1440px * 100 */
     font-weight: 700;
     color: #141416;
 }
 
 .subHeading {
-    width: 549px;
-    font-size: 16px;
+    width: 38.13%; /* 549px / 1440px * 100 */
+    font-size: 1.11%; /* 16px / 1440px * 100 */
     font-weight: 400;
     color: black;
 }
 
 .discoverButton {
-    width: 192px;
-    padding: 16px 24px;
+    width: 13.33%; /* 192px / 1440px * 100 */
+    padding: 1.11% 1.67%; /* 16px 24px / 1440px * 100 */
     background: #141416;
     color: #FCFCFD;
-    font-size: 20px;
+    font-size: 1.39%; /* 20px / 1440px * 100 */
     font-weight: 700;
     text-align: center;
     border-radius: 90px;
@@ -71,26 +71,26 @@ body {
 
 .featureSection {
     width: 100%;
-    height: 601px;
+    height: 41.74%; /* 601px / 1440px * 100 */
     background: #FCFCFD;
     position: relative;
-    top: 819px;
+    top: 56.88%; /* 819px / 1440px * 100 */
 }
 
 .featureImage .imageInner {
-    width: 325.50px;
-    height: 255.75px;
+    width: 22.60%; /* 325.50px / 1440px * 100 */
+    height: 17.75%; /* 255.75px / 1440px * 100 */
     background: #777E90;
-    margin: 58.12px;
+    margin: 4.03%; /* 58.12px / 1440px * 100 */
 }
 
 .featureText {
     position: absolute;
-    left: 704px;
-    top: 1043px;
+    left: 48.89%; /* 704px / 1440px * 100 */
+    top: 72.43%; /* 1043px / 1440px * 100 */
     display: flex;
     flex-direction: column;
-    gap: 32px;
+    gap: 2.22%; /* 32px / 1440px * 100 */
 }
 
 .popularSection,
@@ -101,28 +101,28 @@ body {
     text-align: center;
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 1.39%; /* 20px / 1440px * 100 */
 }
 
 .popularSection {
-    top: 1479px;
+    top: 102.71%; /* 1479px / 1440px * 100 */
 }
 
 .serviceSection {
-    top: 2162px;
+    top: 150.14%; /* 2162px / 1440px * 100 */
 }
 
 .productsSection {
     display: flex;
-    gap: 40px;
+    gap: 2.78%; /* 40px / 1440px * 100 */
     position: absolute;
-    top: 1623px;
-    left: 160px;
+    top: 112.71%; /* 1623px / 1440px * 100 */
+    left: 11.11%; /* 160px / 1440px * 100 */
 }
 
 .productCard {
-    width: 352px;
-    height: 459px;
+    width: 24.44%; /* 352px / 1440px * 100 */
+    height: 31.88%; /* 459px / 1440px * 100 */
     background: white;
     border: 1px solid #B1B5C3;
     border-radius: 20px;
@@ -133,66 +133,66 @@ body {
 
 .productImage {
     width: 100%;
-    height: 273px;
+    height: 18.96%; /* 273px / 1440px * 100 */
     background: #B1B5C3;
 }
 
 .productInfo {
-    padding: 20px;
+    padding: 1.39%; /* 20px / 1440px * 100 */
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 1.39%; /* 20px / 1440px * 100 */
 }
 
 .productName {
-    font-size: 16px;
+    font-size: 1.11%; /* 16px / 1440px * 100 */
     font-weight: 500;
     color: #141416;
 }
 
 .productDescription {
-    font-size: 12px;
+    font-size: 0.83%; /* 12px / 1440px * 100 */
     font-weight: 400;
     color: #141416;
 }
 
 .productActions {
     display: flex;
-    gap: 8px;
+    gap: 0.56%; /* 8px / 1440px * 100 */
     align-items: center;
 }
 
 .orderButton {
-    padding: 12px 16px;
+    padding: 0.83% 1.11%; /* 12px 16px / 1440px * 100 */
     background: #141416;
     color: #FCFCFD;
-    font-size: 14px;
+    font-size: 0.97%; /* 14px / 1440px * 100 */
     font-weight: 700;
     text-align: center;
     border-radius: 90px;
 }
 
 .priceTag {
-    padding: 8px;
+    padding: 0.56%; /* 8px / 1440px * 100 */
     border: 1px solid #141416;
     border-radius: 4px;
-    font-size: 16px;
+    font-size: 1.11%; /* 16px / 1440px * 100 */
     font-weight: 500;
     color: #141416;
 }
 
 .pagination {
     display: flex;
-    gap: 8px;
+    gap: 0.56%; /* 8px / 1440px * 100 */
     position: absolute;
-    top: 1394px;
+    top: 96.81%; /* 1394px / 1440px * 100 */
     left: 50%;
     transform: translateX(-50%);
 }
 
 .pageArrow {
-    width: 24px;
-    height: 24px;
+    width: 1.67%; /* 24px / 1440px * 100 */
+    height: 1.67%; /* 24px / 1440px * 100 */
     background: #777E90;
     border-radius: 50%;
 }
@@ -203,12 +203,12 @@ body {
 
 .menuBar {
     width: 100%;
-    height: 60px;
+    height: 4.17%; /* 60px / 1440px * 100 */
     background: #FCFCFD;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 160px;
+    padding: 1.39% 11.11%; /* 20px 160px / 1440px * 100 */
     position: absolute;
     top: 0;
 }
@@ -216,33 +216,33 @@ body {
 .logo {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 2.22%; /* 32px / 1440px * 100 */
 }
 .logoImage {
-    width: 150px;
-    height: 34.62px;
+    width: 10.42%; /* 150px / 1440px * 100 */
+    height: 2.40%; /* 34.62px / 1440px * 100 */
     flex-shrink: 0;
 }
 
 .menuItems {
     display: flex;
-    gap: 32px;
+    gap: 2.22%; /* 32px / 1440px * 100 */
 }
 
 .menuItem {
-    font-size: 16px;
+    font-size: 1.11%; /* 16px / 1440px * 100 */
     font-weight: 700;
-    color: #333;
+    color: #777E90;
 }
 
 .icons {
     display: flex;
-    gap: 32px;
+    gap: 2.22%; /* 32px / 1440px * 100 */
 }
 
 .icon {
-    width: 38px;
-    height: 38px;
+    width: 2.64%; /* 38px / 1440px * 100 */
+    height: 2.64%; /* 38px / 1440px * 100 */
     background: #777E90;
     border-radius: 50%;
     position: relative;
@@ -258,29 +258,29 @@ body {
     right: 0;
     background: #18191D;
     color: white;
-    font-size: 12px;
+    font-size: 0.83%; /* 12px / 1440px * 100 */
     font-weight: 600;
     border-radius: 12px;
-    padding: 2px 6px;
+    padding: 0.14% 0.42%; /* 2px 6px / 1440px * 100 */
 }
 
 .categorySection {
     display: flex;
-    gap: 44px;
+    gap: 3.06%; /* 44px / 1440px * 100 */
     position: absolute;
-    top: 2294px;
-    left: 316px;
+    top: 159.44%; /* 2294px / 1440px * 100 */
+    left: 21.94%; /* 316px / 1440px * 100 */
 }
 
 .categoryItem {
-    width: 98px;
-    height: 98px;
+    width: 6.81%; /* 98px / 1440px * 100 */
+    height: 6.81%; /* 98px / 1440px * 100 */
     border: 2px solid black;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 16px;
+    font-size: 1.11%; /* 16px / 1440px * 100 */
     font-weight: 600;
     text-align: center;
 }
@@ -289,27 +289,27 @@ body {
     text-align: center;
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 1.39%; /* 20px / 1440px * 100 */
     position: absolute;
-    top: 4327px;
+    top: 300.49%; /* 4327px / 1440px * 100 */
     left: 50%;
     transform: translateX(-50%);
 }
 
 .newsletterForm {
     display: flex;
-    gap: 10px;
+    gap: 0.69%; /* 10px / 1440px * 100 */
     align-items: center;
 }
 
 .newsletterForm input {
-    padding: 10px;
+    padding: 0.69%; /* 10px / 1440px * 100 */
     border: 1px solid #CAD1E1;
     border-radius: 4px;
 }
 
 .newsletterForm button {
-    padding: 10px 20px;
+    padding: 0.69% 1.39%; /* 10px 20px / 1440px * 100 */
     background: #141416;
     color: white;
     border: none;
@@ -318,28 +318,28 @@ body {
 
 .footerSection {
     display: flex;
-    gap: 40px;
+    gap: 2.78%; /* 40px / 1440px * 100 */
     justify-content: center;
     background: #F4F5F6;
-    padding: 40px 0;
+    padding: 2.78% 0; /* 40px / 1440px * 100 */
     position: absolute;
-    top: 4676px;
+    top: 324.72%; /* 4676px / 1440px * 100 */
 }
 
 .footerColumn {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 0.69%; /* 10px / 1440px * 100 */
 }
 
 .footerHeading {
-    font-size: 24px;
+    font-size: 1.67%; /* 24px / 1440px * 100 */
     font-weight: 500;
     color: #141416;
 }
 
 .footerText {
-    font-size: 17px;
+    font-size: 1.18%; /* 17px / 1440px * 100 */
     color: #353945;
 }
 
@@ -348,19 +348,19 @@ body {
     background: #F4F5F6;
     display: flex;
     justify-content: space-between;
-    padding: 20px 222px;
+    padding: 1.39% 15.42%; /* 20px 222px / 1440px * 100 */
     position: absolute;
-    top: 4938px;
+    top: 342.92%; /* 4938px / 1440px * 100 */
 }
 
 .languageSwitcher {
     display: flex;
-    gap: 10px;
+    gap: 0.69%; /* 10px / 1440px * 100 */
     align-items: center;
     color: #95A1BB;
-    font-size: 14px;
+    font-size: 0.97%; /* 14px / 1440px * 100 */
 }
 .footerCopy {
     color: #95A1BB;
-    font-size: 14px;
+    font-size: 0.97%; /* 14px / 1440px * 100 */
 }
