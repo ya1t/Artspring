@@ -1,9 +1,55 @@
 /* base.css */
-body {
-    background-color: #ffffff;
-    color: #000000;
-    font-family: "Noto Sans KR", sans-serif;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
+body {
+    font-family: "Noto Sans KR", sans-serif;
+    line-height: 1.6;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+.header {
+    background: #3333cc;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+.nav {
+    background: #444;
+    color: white;
+    padding: 10px;
+}
+
+.nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+}
+
+.nav ul li {
+    margin: 0 10px;
+}
+
+.nav ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+    position: relative;
+    background: white;
+}
+
 
 .section-title {
     color: #1E1E1E;
@@ -11,6 +57,30 @@ body {
     font-weight: 600;
     line-height: 22.4px;
     margin-bottom: 16px;
+}
+
+.sidebar {
+    background: #ddd;
+    padding: 20px;
+    width: 25%;
+}
+
+/* 메인 콘텐츠 스타일 */
+.main {
+    background: #fff;
+    padding: 20px;
+    width: 70%;
+}
+
+/* 푸터 스타일 */
+.footer {
+    background: #3333cc;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
 }
 
 .menu-item {
@@ -32,3 +102,18 @@ button {
     word-wrap: break-word
 }
 */
+
+.headerImage {
+    width: 1440px; 
+    height: 726px; 
+    position: relative;
+    overflow: hidden;
+}
+
+img {
+    width: 100%;
+    height: auto;
+    position: relative;
+    top: 0;
+    left: 0;
+}
