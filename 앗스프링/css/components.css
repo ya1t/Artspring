@@ -2,13 +2,11 @@
 .logo {
     width: 23.33px;
     height: 35px;
-    border: 3.5px #1E1E1E solid;
 }
 
 .icon, .half-icon {
     width: 24px;
     height: 24px;
-    background: #1E1E1E;
 }
 
 .half-icon {
