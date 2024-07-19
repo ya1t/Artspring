@@ -19,13 +19,16 @@ body {
     font-weight: 400;
     line-height: 22.4px;
 }
-
+/*
 button {
     border-radius: 6px;
-    border: solid 0.7px #0400DB;
-    background-color: #ffffff;
-    font-size: 14px;
-    font-style: normal;
+    border: var(--sds-size-stroke-border) solid var(--Primary-Color-Dark, #0400DB);
+    opacity: var(--sds-size-stroke-border);
+    background: var(--Primary-Color-Dark, #0400DB);
+    color: white;
+    font-size: 11px;
     font-weight: 600;
     line-height: 16px;
+    word-wrap: break-word
 }
+*/
