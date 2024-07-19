@@ -1,8 +1,8 @@
 /* base.css */
 body {
-    background-color: #3333cc;
-    color: #ffffff;
-    font-family: 'Arial', sans-serif;
+    background-color: #ffffff;
+    color: #000000;
+    font-family: "Noto Sans KR", sans-serif;
 }
 
 .section-title {
