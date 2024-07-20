@@ -1,0 +1,16 @@
+/* components.css */
+.logo {
+    width: 23.33px;
+    height: 35px;
+}
+
+.icon, .half-icon {
+    width: 24px;
+    height: 24px;
+}
+
+.half-icon {
+    height: 18px;
+    top: 3px;
+}
+
