@@ -20,7 +20,6 @@ body {
     width: 100%;
     height: 726px;
     position: relative;
-    /*top: 93px;*/
     overflow: hidden;
     background-image: url('../images/gradient2.png');
     background-position: center;
@@ -29,15 +28,10 @@ body {
 
 
 .textSection {
-    /*margin: 259px auto 0 auto; 
-    display: flex;
-    flex-direction: column;
-    gap: 52px;
-    max-width: 80%;*/
-    position: absolute; /* 절대 위치 설정 */
-    top: 50%; /* 수직 가운데 정렬 */
-    left: 30%; /* 수평 가운데 정렬 */
-    transform: translate(-50%, -50%); /* 가운데 정렬을 위한 변환 */
+    position: absolute; 
+    top: 50%;
+    left: 30%;
+    transform: translate(-50%, -50%);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -199,7 +193,8 @@ body {
 }
 
 .menuBar {
-    width: 100%;
+    width: 90%;
+    max-width: 1440px;
     height: 60px;
     background: white;
     display: flex;
@@ -208,6 +203,9 @@ body {
     padding: 20px 5%;
     position: fixed; 
     top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: auto;
 }
 
 .logo {
@@ -230,7 +228,11 @@ body {
     font-size: 16px;
     font-weight: 700;
     color: #333;
+    text-decoration: none;
 }
+ a {
+    text-decoration: none;
+ }
 
 .icons {
     display: flex;
@@ -248,6 +250,11 @@ body {
 
 .cartIcon {
     position: relative;
+}
+
+.memberIcon {
+    position: relative;
+    padding-right: 5%;
 }
 
 .cartBadge {

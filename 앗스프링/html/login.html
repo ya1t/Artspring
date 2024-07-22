@@ -4,26 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>로그인 페이지</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/main.css">
     <style>
-        body {
-            font-family: 'Roboto', sans-serif;
-            background-color: #0400db;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
         .login-container {
             background-color: #ffffff;
             padding: 40px;
             border-radius: 8px;
             box-shadow: none;
             width: 300px;
-            border: solid #0400db 2px;
+            border: solid #000000 2px;
+            position: fixed; 
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            margin: auto;
         }
+
         .login-container h2 {
             margin: 0 0 20px 0;
             text-align: center;
@@ -31,17 +30,17 @@
         }
         .login-container input[type="text"],
         .login-container input[type="password"] {
-            width: 100%;
+            width: 280px;
             padding: 10px;
             margin: 10px 0;
-            border: 1px solid #dddddd;
+            border: 1px solid #000000;
             border-radius: 5px;
             font-size: 14px;
         }
         .login-container button {
             width: 100%;
             padding: 10px;
-            background-color: #0400db;
+            background-color: #000000;
             color: #ffffff;
             border: none;
             border-radius: 5px;
@@ -50,14 +49,14 @@
             transition: background-color 0.3s;
         }
         .login-container button:hover {
-            background-color: #3333cc;
+            background-color: #000000;
         }
         .login-container .signup-link {
             display: block;
             text-align: center;
             margin-top: 20px;
             font-size: 14px;
-            color: #0400db;
+            color: #000000;
             text-decoration: none;
         }
         .login-container .signup-link:hover {
@@ -66,14 +65,46 @@
     </style>
 </head>
 <body>
-    <div class="login-container">
-        <h2>로그인</h2>
-        <form action="login_process.php" method="post">
-            <input type="text" name="username" placeholder="사용자 이름" required>
-            <input type="password" name="password" placeholder="비밀번호" required>
-            <button type="submit">로그인</button>
-        </form>
-        <a href="join.html" class="signup-link">회원가입</a>
+<div class="container">
+    <div class="section">
+        <div class="login-container">
+            <h2>로그인</h2>
+            <form action="login_process.php" method="post">
+                <input type="text" name="username" placeholder="사용자 이름" required>
+                <input type="password" name="password" placeholder="비밀번호" required>
+                <button type="submit">로그인</button>
+            </form>
+            <a href="join.html" class="signup-link">회원가입</a>
+        </div>
     </div>
+    <div class="section">
+        <div class="menuBar">
+            <div class="logo">
+                <img src="../images/logo_black.svg" class="logoImage">
+            </div>
+            <div class="menuItems">
+                <div class="menuItem">Home</div>
+                <div class="menuItem">Discover</div>
+                <div class="menuItem">Blog</div>
+                <div class="menuItem">About Us</div>
+                <div class="menuItem">Contact</div>
+            </div>
+            <!--메뉴바 마진 수정 필요-->
+            <div class="icons">
+                <div class="icon cartIcon">
+                    <a href="장바구니.html">
+                    <img src="../images/icon_cart.svg">
+                    </a>
+                    <div class="cartBadge">2</div>
+                </div>
+                <div class="icon memberIcon">
+                    <a href="login.html">
+                    <img src="../images/icon_member.svg">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>
