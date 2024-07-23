@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+    <title>Neumorphic Buttons</title>
+    <style>
+        body {
+            background: #e0e5ec;
+            font-family: 'Lato', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        h1 {
+            position: relative;
+            text-align: center;
+            color: #353535;
+            font-size: 50px;
+            font-family: "Cormorant Garamond", serif;
+        }
+        .frame {
+            text-align: center;
+        }
+        .btn {
+            width: 150px;
+            height: 50px;
+            margin: 20px;
+            border-radius: 30px;
+            background: #e0e5ec;
+            box-shadow: 7px 7px 20px #a3b1c6, -7px -7px 20px #ffffff;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            font-size: 16px;
+            color: #353535;
+            font-family: 'Lato', sans-serif;
+            transition: all 0.3s ease;
+        }
+        .btn:active {
+            box-shadow: inset 7px 7px 20px #a3b1c6, inset -7px -7px 20px #ffffff;
+        }
+        .btn-light {
+            background: #ffffff;
+            box-shadow: 7px 7px 20px #a3b1c6, -7px -7px 20px #ffffff;
+        }
+        .btn-light:active {
+            box-shadow: inset 7px 7px 20px #a3b1c6, inset -7px -7px 20px #ffffff;
+        }
+    </style>
+</head>
+<body>
+    <div class="frame">
+        <h1>Neumorphic Buttons</h1>
+        <button class="btn">Button 1</button>
+        <button class="btn">Button 2</button>
+        <button class="btn btn-light">Button 3</button>
+        <button class="btn btn-light">Button 4</button>
+    </div>
+</body>
+</html>
