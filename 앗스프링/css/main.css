@@ -369,3 +369,24 @@ body {
     color: #95A1BB;
     font-size: 14px;
 }
+
+/*버튼 설정하기*/
+button {
+    background-color: white;
+    color: black;
+    font-size: 16px;
+    font-family: Inter;
+    font-weight: 600;
+    line-height: 18px;
+    word-wrap: break-word
+    /*
+    border-radius: 6px;
+    border: 1px solid var(--Primary-Color, #7749F8);
+    background: var(--Default-White, #FFF);
+    */
+}
+
+button a:hover {
+    background-color: black;
+    color: white;
+}
