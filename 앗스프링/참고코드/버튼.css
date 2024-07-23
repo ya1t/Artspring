@@ -1,0 +1,199 @@
+/* Colours */
+:root {
+  --green: #2ecc71;
+  --red: #e74c3c;
+  --blue: #3498db;
+  --yellow: #f1c40f;
+  --purple: #8e44ad;
+  --turquoise: #1abc9c;
+}
+
+/* Reset and Layout Styles */
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  background: #2c3e50;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 16px;
+}
+
+body {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  align-content: center;
+}
+
+h1 {
+  color: var(--yellow);
+  font-size: 4rem;
+  text-transform: uppercase;
+  display: block;
+  width: 100%;
+  text-align: center;
+}
+
+@media screen and (max-width: 600px) {
+  h1 {
+    font-size: 3rem;
+  }
+}
+
+p {
+  color: var(--yellow);
+  font-size: 1.2rem;
+  width: 100%;
+  padding: 20px;
+  text-align: center;
+}
+
+/* Basic Button Style */
+.btn {
+  box-sizing: border-box;
+  appearance: none;
+  background-color: transparent;
+  border: 2px solid var(--red);
+  border-radius: 0.6em;
+  color: var(--red);
+  cursor: pointer;
+  display: flex;
+  align-self: center;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1;
+  margin: 20px;
+  padding: 1.2em 2.8em;
+  text-decoration: none;
+  text-align: center;
+  text-transform: uppercase;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+}
+
+.btn:hover,
+.btn:focus {
+  color: #fff;
+  outline: 0;
+}
+
+/* BUTTON 1 */
+.first {
+  transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
+}
+
+.first:hover {
+  box-shadow: 0 0 40px 40px var(--red) inset;
+}
+
+/* BUTTON 2 */
+.second {
+  border-radius: 3em;
+  border-color: var(--turquoise);
+  color: #fff;
+  background: linear-gradient(to right, 
+    rgba(26, 188, 156, 0.4), rgba(26, 188, 156, 0.4) 5%, 
+    var(--turquoise) 5%, var(--turquoise) 10%, 
+    rgba(26, 188, 156, 0.4) 10%, rgba(26, 188, 156, 0.4) 15%, 
+    var(--turquoise) 15%, var(--turquoise) 20%, 
+    rgba(26, 188, 156, 0.4) 20%, rgba(26, 188, 156, 0.4) 25%, 
+    var(--turquoise) 25%, var(--turquoise) 30%, 
+    rgba(26, 188, 156, 0.4) 30%, rgba(26, 188, 156, 0.4) 35%, 
+    var(--turquoise) 35%, var(--turquoise) 40%, 
+    rgba(26, 188, 156, 0.4) 40%, rgba(26, 188, 156, 0.4) 45%, 
+    var(--turquoise) 45%, var(--turquoise) 50%, 
+    rgba(26, 188, 156, 0.4) 50%, rgba(26, 188, 156, 0.4) 55%, 
+    var(--turquoise) 55%, var(--turquoise) 60%, 
+    rgba(26, 188, 156, 0.4) 60%, rgba(26, 188, 156, 0.4) 65%, 
+    var(--turquoise) 65%, var(--turquoise) 70%, 
+    rgba(26, 188, 156, 0.4) 70%, rgba(26, 188, 156, 0.4) 75%, 
+    var(--turquoise) 75%, var(--turquoise) 80%, 
+    rgba(26, 188, 156, 0.4) 80%, rgba(26, 188, 156, 0.4) 85%, 
+    var(--turquoise) 85%, var(--turquoise) 90%, 
+    rgba(26, 188, 156, 0.4) 90%, rgba(26, 188, 156, 0.4) 95%, 
+    var(--turquoise) 95%, var(--turquoise) 100%);
+  background-position: 0 0;
+  background-size: 100%;
+  transition: background 300ms ease-in-out;
+}
+
+.second:hover {
+  background-position: 100px;
+}
+
+/* BUTTON 3 */
+.third {
+  border-color: var(--blue);
+  color: #fff;
+  box-shadow: 0 0 40px 40px var(--blue) inset, 0 0 0 0 var(--blue);
+  transition: all 150ms ease-in-out;
+}
+
+.third:hover {
+  box-shadow: 0 0 10px 0 var(--blue) inset, 0 0 10px 4px var(--blue);
+}
+
+/* BUTTON 4 */
+.fourth {
+  border-color: var(--yellow);
+  color: #fff;
+  background: linear-gradient(45deg, var(--yellow) 50%, transparent 50%);
+  background-position: 100%;
+  background-size: 400%;
+  transition: background 300ms ease-in-out;
+}
+
+.fourth:hover {
+  background-position: 0;
+}
+
+/* BUTTON 5 */
+.fifth {
+  border-color: var(--purple);
+  border-radius: 0;
+  color: var(--purple);
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  transition: color 150ms ease-in-out;
+}
+
+.fifth:after {
+  content: '';
+  position: absolute;
+  display: block;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 100%;
+  background: var(--purple);
+  z-index: -1;
+  transition: width 150ms ease-in-out;
+}
+
+.fifth:hover {
+  color: #fff;
+}
+
+.fifth:hover:after {
+  width: 110%;
+}
+
+/* BUTTON 6 */
+.sixth {
+  border-radius: 3em;
+  border-color: var(--green);
+  color: var(--green);
+  background: linear-gradient(to bottom, transparent 50%, var(--green) 50%);
+  background-position: 0% 0%;
+  background-size: 210%;
+  transition: background 150ms ease-in-out, color 150ms ease-in-out;
+}
+
+.sixth:hover {
+  color: #fff;
+  background-position: 0 100%;
+}
