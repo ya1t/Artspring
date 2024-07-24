@@ -1,6 +1,8 @@
 body {
     margin: 0;
     font-family: "Noto Sans KR", sans-serif;
+    padding-top: 100px;
+    line-height: 1.6;
 }
 
 .container {
@@ -23,7 +25,6 @@ body {
     overflow: hidden;
     background-image: url('../images/gradient2.png');
     background-position: center;
-    top: 93px;
 }
 
 
@@ -75,18 +76,23 @@ body {
 .featureSection {
     width: 100%;
     height: 601px;
-    background: #FCFCFD;
+    background: #000000;
     margin-top: 50px; 
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
 }
 
 .featureImage .imageInner {
-    width: 325.50px;
-    height: 255.75px;
-    background: #777E90;
-    margin: 58.12px;
+    width: 25%;
+    height: 50%;
+    background: red;
+    position: absolute;
+    top: 50%;
+    left: 10%;
+    transform: translateY(-50%);
+    z-index: 10;
 }
 
 .featureText {
@@ -95,6 +101,12 @@ body {
     gap: 32px;
     max-width: 80%;
     margin: 0 auto; 
+    color: white;
+    position: absolute;
+    top: 50%;
+    left: 20%;
+    transform: translateY(-50%);
+    z-index: 20;
 }
 
 .popularSection,
@@ -104,6 +116,26 @@ body {
     flex-direction: column;
     gap: 20px;
     margin: 100px auto; 
+}
+
+.popularTitle,
+.serviceTitle {
+    text-align: center;
+    color: black;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 32px;
+    word-wrap: break-word;
+}
+
+.popularSubtitle,
+.serviceSubtitle {
+    text-align: center;
+    color: black;
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 40px;
+    word-wrap: break-word;
 }
 
 .productsSection {
@@ -128,6 +160,16 @@ body {
     width: 100%;
     height: 273px;
     background: #B1B5C3;
+    overflow: hidden;
+    position: relative;
+    background-position: center;
+    object-fit: cover;
+}
+
+.productImage img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .productInfo {
@@ -135,6 +177,7 @@ body {
     display: flex;
     flex-direction: column;
     gap: 20px;
+    background: white;
 }
 
 .productName {
@@ -206,6 +249,7 @@ body {
     left: 50%;
     transform: translateX(-50%);
     margin: auto;
+    z-index: 1000;
 }
 
 .logo {
@@ -397,3 +441,29 @@ button a:hover {
     <div style="color: #6610F2; font-size: 16px; font-family: Inter; font-weight: 600; line-height: 18px; word-wrap: break-word">Button</div>
 </div>
 */
+
+.search-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Viewport height */
+    background-color: none;
+}
+
+.search-field {
+    width: 300px;
+    padding: 10px 15px;
+    border: 2px solid #ccc;
+    border-radius: 25px;
+    font-size: 16px;
+    transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.search-field:focus {
+    border-color: #007BFF; /* Border color on focus */
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.25); /* Box shadow on focus */
+    outline: none; /* Remove default outline */
+}
+.search-field::placeholder {
+    color: #aaa; /* Placeholder text color */
+}
