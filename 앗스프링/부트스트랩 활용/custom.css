@@ -1,0 +1,14 @@
+body {
+    font-family: 'Noto Sans KR', sans-serif;
+    padding-top: 70px;
+    line-height: 1.6;
+}
+
+.jumbotron {
+    background: none;
+}
+
+.card-img-top {
+    height: 273px;
+    object-fit: cover;
+}
