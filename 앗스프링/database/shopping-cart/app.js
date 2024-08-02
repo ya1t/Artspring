@@ -34,8 +34,8 @@ app.get('/images', (req, res) => {
     });
 });
 
-app.listen(PORT, '192.168.0.71', () => {
-    console.log(`Server is running on http://192.168.0.71:4000`);
-});
+app.listen(PORT, () => {
+    console.log(`Server is running on http://localhost:${PORT}`);
+  });
 
 // http://192.168.0.71:4000
