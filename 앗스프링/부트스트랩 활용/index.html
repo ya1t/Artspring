@@ -5,270 +5,148 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>앗스프링 Artspring</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="custom.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="main.css">
 </head>
+
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-        <div class="container">
-            <a class="navbar-brand" href="#"><img src="../images/logo_black.svg" class="logoImage" alt="Logo" width="150px"></a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="../html/storeList.html">Stores</a></li>
-                    <li class="nav-item"><a class="nav-link" href="../html/article.html">Magazine</a></li>
-                    <li class="nav-item"><a class="nav-link" href="../html/aboutUs.html">About Us</a></li>
-                    <li class="nav-item"><a class="nav-link" href="../html/contact.html">Contact</a></li>
-                </ul>
-                <form class="form-inline">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                </form>
-                <ul class="navbar-nav">
-                    <li class="nav-item"><a class="nav-link" href="../html/장바구니.html"><img src="../images/icon_cart.svg" alt="Cart"></a></li>
-                    <li class="nav-item"><a class="nav-link" href="../html/login.html"><img src="../images/icon_member.svg" alt="Member"></a></li>
-                </ul>
-            </div>
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+    <a class="navbar-brand" href="#">
+        <img src="../images/logo_black.svg" width="150" height="34.62" alt="Logo">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="main.html">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="storeList.html">Stores</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="article.html">Magazine</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="aboutUs.html">About Us</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="contact.html">Contact</a>
+            </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="검색하기" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+        <div class="navbar-icons ml-3">
+            <a href="장바구니.html" class="nav-link">
+                <img src="../images/icon_cart.svg" width="30" height="30" alt="Cart">
+            </a>
+            <a href="login.html" class="nav-link">
+                <img src="../images/icon_member.svg" width="30" height="30" alt="Member">
+            </a>
         </div>
-    </nav>
-
-<!--    <div class="container mt-5 pt-5">
-        <div class="jumbotron text-center bg-white">
-            <h1 class="display-4">앗!스프링!<br>Artspring</h1>
-            <p class="lead">꽃 피우는 날을 기다리는 당신에게 봄을 선물합니다.</p>
-            <a class="btn btn-primary btn-lg" href="../html/입력.html" role="button">상품 등록하기</a>
-            <img src="../images/gradient2.png" class="img-fluid" alt="headerImage">
-        </div>
--->
-<div class="px-4 py-5 my-5 text-center">
-    <h1 class="display-5 fw-bold text-body-emphasis">Centered hero</h1>
-    <div class="col-lg-6 mx-auto">
-      <p class="lead mb-4">Quickly design and customize responsive mobile-first sites with Bootstrap, the world’s most popular front-end open source toolkit, featuring Sass variables and mixins, responsive grid system, extensive prebuilt components, and powerful JavaScript plugins.</p>
-      <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-        <button type="button" class="btn btn-primary btn-lg px-4 gap-3">Primary button</button>
-        <button type="button" class="btn btn-outline-secondary btn-lg px-4">Secondary</button>
-      </div>
-      <img class="d-block mx-auto mb-4" src="../images/gradient2.png" alt="" width="100%" height="100%">
     </div>
-  </div>
+</nav>
 
-        <div class="row my-5">
-            <div class="col text-center">
-                <h2>이번 주 소개 작가</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sapien, est felis, sagittis viverra nulla mattis scelerisque. Eget cras integer.</p>
-            </div>
-        </div>
+<div class="container mt-5 pt-5">
+    <div class="jumbotron text-center">
+        <h1 class="display-4">앗!스프링!<br>Artspring</h1>
+        <p class="lead">꽃 피우는 날을 기다리는 당신에게 봄을 선물합니다.</p>
+        <a class="btn btn-primary btn-lg" href="입력.html" role="button">상품 등록하기</a>
+    </div>
 
-        <div class="row my-5">
-            <div class="col text-center">
-                <h2>Most Popular</h2>
-                <h3>이번 주 가장 인기 있는 제품</h3>
+    <div class="row my-5">
+        <div class="col-md-6">
+            <div class="featureImage">
+                <div class="imageInner bg-danger"></div>
             </div>
         </div>
-        
-        <div class="row">
-            <div class="col-md-4">
-                <div class="card">
-                    <img src="../images/캐릭터폰케이스_1.webp" class="card-img-top" alt="Product Image">
-                    <div class="card-body">
-                        <h5 class="card-title">뫄뫄 폰케이스</h5>
-                        <p class="card-text">뫄뫄 폰케이스 설명 뫄뫄 폰케이스 설명 뫄뫄 폰케이스 설명 뫄뫄 폰케이스 설명</p>
-                        <a href="#" class="btn btn-dark">주문하기</a>
-                        <p class="card-text"><small class="text-muted">$20</small></p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card">
-                    <img src="../images/락앤롤티셔츠.webp" class="card-img-top" alt="Product Image">
-                    <div class="card-body">
-                        <h5 class="card-title">롸롸 티셔츠</h5>
-                        <p class="card-text">롸롸 티셔츠 설명 롸롸 티셔츠 설명 롸롸 티셔츠 설명 롸롸 티셔츠 설명</p>
-                        <a href="#" class="btn btn-dark">주문하기</a>
-                        <p class="card-text"><small class="text-muted">$20</small></p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card">
-                    <img src="../images/선인장키링.webp" class="card-img-top" alt="Product Image">
-                    <div class="card-body">
-                        <h5 class="card-title">솨솨 키링</h5>
-                        <p class="card-text">솨솨 키링 설명 솨솨 키링 설명 솨솨 키링 설명 솨솨 키링 설명</p>
-                        <a href="#" class="btn btn-dark">주문하기</a>
-                        <p class="card-text"><small class="text-muted">$20</small></p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="text-center my-5">
-            <h2>아트 스타일</h2>
-            <h3>좋아하는 스타일을 고르세요</h3>
-        </div>
-        
-        <div class="d-flex justify-content-center my-4">
-            <div class="btn-group" role="group" aria-label="Page navigation">
-                <button type="button" class="btn btn-secondary">&laquo;</button>
-                <button type="button" class="btn btn-secondary">&raquo;</button>
-            </div>
-        </div>
-        
-        <div class="d-flex justify-content-center my-4">
-            <div class="p-3 border rounded-circle">Cupcake</div>
-            <div class="p-3 border rounded-circle">Cupcake</div>
-            <div class="p-3 border rounded-circle">Cupcake</div>
-            <div class="p-3 border rounded-circle">Cupcake</div>
-            <div class="p-3 border rounded-circle">Cupcake</div>
-            <div class="p-3 border rounded-circle">Cupcake</div>
+        <div class="col-md-6 text-white d-flex flex-column justify-content-center">
+            <h2>이번 주 소개 작가</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sapien, est felis, sagittis viverra nulla mattis scelerisque. Eget cras integer.</p>
         </div>
     </div>
 
-    <div class="container">
-        <div class="components">
-          
-          <div class="switch">
-            <div class="switch__1">
-              <input id="switch-1" type="checkbox">
-              <label for="switch-1"></label>
-            </div>
-            
-            <div class="switch__2">
-              <input id="switch-2" type="checkbox" checked>
-              <label for="switch-2"></label>
-            </div>
-          </div>
-          
-          <div class="checkbox">
-            <div class="checkbox__1">
-              <input id="checkbox-1" type="checkbox">
-              <label for="checkbox-1">
-                <i class="material-icons">done</i></label>
-            </div>
-            <div class="checkbox__2">
-              <input id="checkbox-2" type="checkbox" checked>
-              <label for="checkbox-2">
-                <i class="material-icons">done</i></label>
-            </div>
-          </div>
-          
-          <div class="radio">
-            <div class="radio__1">
-              <input id="radio-1" type="radio"  name="radio" value="1">
-              <label for="radio-1"></label>
-            </div>
-            
-            <div class="radio__2">
-              <input id="radio-2" type="radio" name="radio" value="2" checked>
-              <label for="radio-2"></label>
-            </div>
-          </div>
-          
-          <div class="btn btn__primary"><p>Button</p></div>
-          <div class="btn btn__secondary"><p>Button</p></div>
-          
-          <div class="clock">
-            <div class="hand hours"></div>
-            <div class="hand minutes"></div>
-            <div class="hand seconds"></div>
-            <div class="point"></div>
-            <div class="marker">
-              <span class="marker__1"></span>
-              <span class="marker__2"></span>
-              <span class="marker__3"></span>
-              <span class="marker__4"></span>
-            </div>
-          </div>
-          
-          <div class="chip">
-            <div class="chip__icon">
-              <ion-icon name="color-palette"></ion-icon></div>
-            <p>Neumorphic Design</p>
-            <div class="chip__close">
-              <ion-icon name="close"></ion-icon>
-            </div>
-          </div>
-          
-          <div class="circle">
-            <span class="circle__btn">
-              <ion-icon class="pause" name="pause"></ion-icon>
-              <ion-icon class="play" name="play"></ion-icon>
-            </span>
-            <span class="circle__back-1"></span>
-            <span class="circle__back-2"></span>
-          </div>
-          
-          <div class="form">
-            <input type="text" class="form__input" placeholder="Type anything...">
-          </div>
-          
-          <div class="search">
-            <input type="text" class="search__input" placeholder="Search...">
-            <div class="search__icon">
-              <ion-icon name="search"></ion-icon>
-            </div>
-          </div>
-          
-          <div class="segmented-control">
-            
-            <input type="radio" name="radio2" value="3" id="tab-1" checked/>
-            <label for="tab-1" class= "segmented-control__1">
-              <p>Tab 1</p></label>
-            
-            <input type="radio" name="radio2" value="4" id="tab-2" />
-            <label for="tab-2" class= "segmented-control__2">
-              <p>Tab 2</p></label>
-            
-            <input type="radio" name="radio2" value="5" id="tab-3" />
-            <label for="tab-3" class= "segmented-control__3">
-              <p>Tab 3</p></label>
-            
-            <div class="segmented-control__color"></div>
-          </div>
-          
-          <div class="icon">
-            <div class="icon__home">
-              <ion-icon name="home"></ion-icon></div>
-            <div class="icon__account">
-              <ion-icon name="person"></ion-icon></div>
-            <div class="icon__settings">
-              <ion-icon name="settings"></ion-icon></div>
-          </div>
-          
-          <div class="slider">
-            <div class="slider__box">
-              <span class="slider__btn" id="find"></span>
-              <span class="slider__color"></span>
-              <span class="slider__tooltip">50%</span>
-            </div>
-          </div>
-        </div>
-        <a href="https://dribbble.com/myacode" class="dribbble" target="_blank"><ion-icon name="logo-dribbble"></ion-icon></a>
-      </div>
-      
+    <div class="text-center my-5">
+        <h2 class="popularTitle">Most Popular</h2>
+        <p class="popularSubtitle">이번 주 가장 인기 있는 제품</p>
+    </div>
 
-    <footer class="bg-light py-4">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card">
+                <img src="../images/캐릭터폰케이스_1.webp" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">뫄뫄 폰케이스</h5>
+                    <p class="card-text">뫄뫄 폰케이스 설명 뫄뫄 폰케이스 설명 뫄뫄 폰케이스 설명 뫄뫄 폰케이스 설명</p>
+                    <a href="#" class="btn btn-dark">주문하기</a>
+                    <span class="float-right priceTag">$20</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <img src="../images/락앤롤티셔츠.webp" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">롸롸 티셔츠</h5>
+                    <p class="card-text">롸롸 티셔츠 설명 롸롸 티셔츠 설명 롸롸 티셔츠 설명 롸롸 티셔츠 설명</p>
+                    <a href="#" class="btn btn-dark">주문하기</a>
+                    <span class="float-right priceTag">$20</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <img src="../images/선인장키링.webp" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">솨솨 키링</h5>
+                    <p class="card-text">솨솨 키링 설명 솨솨 키링 설명 솨솨 키링 설명 솨솨 키링 설명</p>
+                    <a href="#" class="btn btn-dark">주문하기</a>
+                    <span class="float-right priceTag">$20</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="text-center my-5">
+        <h2 class="serviceTitle">아트 스타일</h2>
+        <p class="serviceSubtitle">좋아하는 스타일을 고르세요</p>
+        <div class="d-flex justify-content-center my-3">
+            <button class="btn btn-outline-secondary mx-2">&laquo;</button>
+            <button class="btn btn-outline-secondary mx-2">&raquo;</button>
+        </div>
+        <div class="d-flex justify-content-center flex-wrap">
+            <div class="categoryItem m-2">Cupcake</div>
+            <div class="categoryItem m-2">Cupcake</div>
+            <div class="categoryItem m-2">Cupcake</div>
+            <div class="categoryItem m-2">Cupcake</div>
+            <div class="categoryItem m-2">Cupcake</div>
+            <div class="categoryItem m-2">Cupcake</div>
+        </div>
+    </div>
+
+    <footer class="bg-light py-5">
         <div class="container">
             <div class="row">
-                <div class="col text-center">
+                <div class="col-md-4">
+                    <h5>Sweetdeli</h5>
                     <p>sweetdeli@gmail.com</p>
                     <p>+1-2345-6789</p>
                     <p>123 Ave, New York, USA</p>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col text-center">
-                    <p>&copy; 2024. All rights reserved.</p>
+                <div class="col-md-8 d-flex justify-content-between align-items-center">
+                    <div>한국어</div>
+                    <div>Copyright © 2024. All rights reserved.</div>
                 </div>
             </div>
         </div>
     </footer>
+</div>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script src="js/main.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
