@@ -445,7 +445,7 @@ button a:hover {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh; 
+    height: 60px; 
     background-color: none;
     gap: 32px;
 }
@@ -459,15 +459,16 @@ button a:hover {
 .search-field {
     width: 100%;
     padding: 10px 15px 10px 15px; 
-    border: 2px solid #ccc;
+    border: none;
     border-radius: 25px;
     font-size: 16px;
     transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.2), inset -2px -2px 5px rgba(255, 255, 255, 0.7);
 }
 
 .search-field:focus {
     border-color: #333; 
-    box-shadow: 0 0 8px rgba(59, 59, 59, 0.25);
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2), -2px -2px 5px rgba(255, 255, 255, 0.7);
     outline: none;
 }
 
@@ -479,7 +480,7 @@ button a:hover {
     position: absolute;
     width: 20px;
     height: 20px;
-    right: 4%;
+    right: 0%;
     top: 50%;
     transform: translateY(-50%);
     background: none;
@@ -490,7 +491,7 @@ button a:hover {
 .searchIcon img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
     display: block;
 }
 
