@@ -7,7 +7,23 @@ const LocalStrategy = require("passport-local").Strategy;
 const conn = require('./db');
 const sha = require('sha256');
 
+let multer = require('multer');
+let storage = multer.diskStorage({
+    destination : function(req, file, done){
+        done(null, './public/image/')
+    },
+    filename : function(req, file, done){
+        done(null, Date.now() + path.extname(file.originalname));
+    }
+});
+let upload = multer({storage : storage});
+let imagepath = '';
+const path = require('path');
+
 const app = express();
+
+app.use(express.static("public"));
+app.use("/public/image", express.static(path.join(__dirname, 'public', 'image')));
 
 app.use(session({
     secret : 'mh',
@@ -81,14 +97,29 @@ app.post('/save', function(req, res){
     console.log(req.body.title);
     console.log(req.body.content);
     console.log(req.body.email);
-    let sql = "insert into post (title, content, created, email) value(?, ?, NOW(), ?)";
-    let params = [req.body.title, req.body.content, req.body.email];
+    console.log(imagepath);
+
+    let sql = "insert into post (title, content, created, email, imagepath) value(?, ?, NOW(), ?, ?)";
+    let params = [req.body.title, req.body.content, req.body.email, imagepath];
     conn.query(sql, params, function(err, result) {
         if (err) throw err;
         console.log('데이터 추가 성공');
+    //    console.log(imagepath);
+        res.redirect('/list');
     });
-    res.redirect('/list');
 });
+/*
+app.get('/photo', (req, res) => {
+    fs.readdir('public/image/', (err, files) => {
+      if (err) {
+        console.log(err);
+        res.status(500).send('서버 에러');
+      } else {
+        res.json(files);
+      }
+    });
+  });
+*/  
 
 app.get('/list', function(req, res){
     conn.query("select * from post", function(err, rows, fields){
@@ -107,7 +138,7 @@ app.post('/delete', function(req, res){
     });
     res.send('삭제 완료');
 });
-
+/*
 app.get('/content/:id', function(req, res){
     console.log(req.params.id);
     let sql = "select * from post where id = ?";
@@ -117,21 +148,44 @@ app.get('/content/:id', function(req, res){
     res.render('content.ejs', {data : result[0]});
     });
 });
+*/
+app.get('/content/:id', function(req, res) {
+    let sql = "select * from post where id = ?";
+    conn.query(sql, [req.params.id], function(err, result) {
+        if (err) {
+            console.error(err);
+            return res.status(500).send('Internal Server Error');
+        }
+
+        if (result.length > 0) {
+            console.log(result);
+            res.render('content.ejs', { data: result[0] });
+        } else {
+            res.status(404).send('Content not found');
+        }
+    });
+});
+
 
 app.get("/edit/:id", function(req, res){
     console.log(req.params.id);
     let sql = "select * from post where id = ?";
     conn.query(sql, [req.params.id], function(err, result){
         if (err) throw err;
-        console.log(result);
-    res.render('edit.ejs', {data : result[0]});
+    //    console.log(result);
+        if (result.length > 0) {
+            res.render('edit.ejs', {data : result[0]});
+        } else {
+            console.log(result)
+            res.status(404).send('Post not found');
+        }
     });
 });
 
-app.post('/edit', function(req, res){
+app.post('/edit', upload.single('picture'), function(req, res){
     console.log(req.body); 
-    let sql = "UPDATE post SET title = ?, content = ?, email = ?, created = NOW() WHERE id = ?";
-    let params = [req.body.title, req.body.content, req.body.email, req.body.id];
+    let sql = "UPDATE post SET title = ?, content = ?, email = ?, created = NOW(), imagepath = ? WHERE id = ?";
+    let params = [req.body.title, req.body.content, req.body.email, imagepath, req.body.id];
     conn.query(sql, params, function(err, result) {
         if (err) throw err;
         console.log('수정 완료');
@@ -197,6 +251,26 @@ app.post('/signup', function(req, res){
     });
 });
 
+app.post('/photo', upload.single('picture'), function(req, res){
+    imagepath = '\\' + req.file.path;
+    console.log("app.post: " + imagepath);
+    console.log(req.file.path);
+})
+
+app.get('/search', function(req, res){
+    console.log(req.query.value);
+    let sql = "select * from post where title like ? or content like ?";
+
+    const searchValue = `%${req.query.value}%`;
+
+    conn.query(sql, [searchValue, searchValue], function(err, result){
+        if (err) throw err;
+        console.log(result);
+        res.render('sresult.ejs', {data : result});
+    });
+})
+
+// 인증
 app.get('/facebook', passport.authenticate('facebook'));
 app.get('/facebook/callback', passport.authenticate('facebook', {
     successRedirect : '/',
