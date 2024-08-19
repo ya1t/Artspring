@@ -1,3 +1,4 @@
+// const 코드 ---------------------------------------------------------------------------------------------------------
 const express = require('express');
 const passport = require("passport");
 const session = require('express-session');
@@ -22,6 +23,7 @@ const path = require('path');
 
 const app = express();
 
+// app.use 코드 ---------------------------------------------------------------------------------------------------------
 app.use(express.static("public"));
 app.use("/public/image", express.static(path.join(__dirname, 'public', 'image')));
 
@@ -30,7 +32,9 @@ app.use(session({
     resave : false,
     saveUninitialized : true,
 }));
+// 세션 코드는 인증 코드보다 앞에 위치해야 함
 
+// passport 관련 코드 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -83,12 +87,13 @@ passport.use(new LocalStrategy({
     });
 }));
 
-
+// app 관련 코드 ---------------------------------------------------------------------------------------------------------
 app.get('/', function(req, res){
     console.log(req.user);
     res.render('index.ejs', {user: req.user});
 });
 
+// 게시물 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 app.get('/enter', function(req, res){
     res.render('enter.ejs');
 });
@@ -104,30 +109,51 @@ app.post('/save', function(req, res){
     conn.query(sql, params, function(err, result) {
         if (err) throw err;
         console.log('데이터 추가 성공');
-    //    console.log(imagepath);
         res.redirect('/list');
     });
 });
 /*
-app.get('/photo', (req, res) => {
-    fs.readdir('public/image/', (err, files) => {
-      if (err) {
-        console.log(err);
-        res.status(500).send('서버 에러');
-      } else {
-        res.json(files);
-      }
-    });
-  });
-*/  
-
 app.get('/list', function(req, res){
     conn.query("select * from post", function(err, rows, fields){
         if (err) throw err;
-        console.log(rows);
+    //    console.log(rows);
+        console.log("게시물 리스트 불러옴 rows는 너무 길어서 콘솔에서 뺐음")
     res.render('list.ejs', {data : rows});
     });
 });
+*/
+app.get('/list', function(req, res){
+    // 현재 페이지를 가져옵니다. 기본값은 1
+    let page = req.query.page ? parseInt(req.query.page) : 1;
+    let limit = 12; // 한 페이지에 보여줄 게시물 수
+    let offset = (page - 1) * limit; // 시작점
+
+    // 전체 게시물 수를 가져옵니다.
+    conn.query("SELECT COUNT(*) AS count FROM post", function(err, countResult){
+        if (err) throw err;
+
+        let totalPosts = countResult[0].count;
+        let totalPages = Math.ceil(totalPosts / limit);
+
+        // 현재 페이지의 게시물들을 가져옵니다.
+        let sql = "SELECT * FROM post ORDER BY created DESC LIMIT ? OFFSET ?";
+        conn.query(sql, [limit, offset], function(err, rows){
+            if (err) throw err;
+
+            // AJAX 요청이라면, 필요한 부분만 렌더링하여 반환
+            if (req.xhr) {
+                res.render('partials/list_items.ejs', {data: rows});
+            } else {
+                res.render('list.ejs', {
+                    data: rows,
+                    currentPage: page,
+                    totalPages: totalPages
+                });
+            }
+        });
+    });
+});
+
 
 app.post('/delete', function(req, res){
     console.log(req.body); 
@@ -138,17 +164,7 @@ app.post('/delete', function(req, res){
     });
     res.send('삭제 완료');
 });
-/*
-app.get('/content/:id', function(req, res){
-    console.log(req.params.id);
-    let sql = "select * from post where id = ?";
-    conn.query(sql, [req.params.id], function(err, result){
-        if (err) throw err;
-        console.log(result);
-    res.render('content.ejs', {data : result[0]});
-    });
-});
-*/
+
 app.get('/content/:id', function(req, res) {
     let sql = "select * from post where id = ?";
     conn.query(sql, [req.params.id], function(err, result) {
@@ -172,7 +188,6 @@ app.get("/edit/:id", function(req, res){
     let sql = "select * from post where id = ?";
     conn.query(sql, [req.params.id], function(err, result){
         if (err) throw err;
-    //    console.log(result);
         if (result.length > 0) {
             res.render('edit.ejs', {data : result[0]});
         } else {
@@ -193,6 +208,26 @@ app.post('/edit', upload.single('picture'), function(req, res){
     });
 });
 
+app.post('/photo', upload.single('picture'), function(req, res){
+    imagepath = '\\' + req.file.path;
+    console.log("app.post: " + imagepath);
+    console.log(req.file.path);
+})
+
+app.get('/search', function(req, res){
+    console.log(req.query.value);
+    let sql = "select * from post where title like ? or content like ?";
+
+    const searchValue = `%${req.query.value}%`;
+
+    conn.query(sql, [searchValue, searchValue], function(err, result){
+        if (err) throw err;
+        console.log(result);
+        res.render('sresult.ejs', {data : result});
+    });
+})
+
+// 회원관리 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 app.get("/login", function(req,res){
     console.log(req.session);
     if(req.session.user){
@@ -251,26 +286,7 @@ app.post('/signup', function(req, res){
     });
 });
 
-app.post('/photo', upload.single('picture'), function(req, res){
-    imagepath = '\\' + req.file.path;
-    console.log("app.post: " + imagepath);
-    console.log(req.file.path);
-})
-
-app.get('/search', function(req, res){
-    console.log(req.query.value);
-    let sql = "select * from post where title like ? or content like ?";
-
-    const searchValue = `%${req.query.value}%`;
-
-    conn.query(sql, [searchValue, searchValue], function(err, result){
-        if (err) throw err;
-        console.log(result);
-        res.render('sresult.ejs', {data : result});
-    });
-})
-
-// 인증
+// 플랫폼 인증 ---------------------------------------------------------------------------------------------------------
 app.get('/facebook', passport.authenticate('facebook'));
 app.get('/facebook/callback', passport.authenticate('facebook', {
     successRedirect : '/',
@@ -300,6 +316,9 @@ app.get('/kakao/callback', passport.authenticate('kakao', {
     failureRedirect : "/fail",
 }));
 
+// 서버 작동 콘솔 -------------------------------------------------------------------------------------------------------
 app.listen(8080, function(){
     console.log("포트 8080으로 서버 대기중...");
+    console.log("http://localhost:8080/")
+    console.log("http://192.168.0.71:8080/")
 });
