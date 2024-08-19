@@ -6,7 +6,7 @@ const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const LocalStrategy = require("passport-local").Strategy;
 const conn = require('./db');
-const sha = require('sha256');
+//const sha = require('sha256');
 
 let multer = require('multer');
 let storage = multer.diskStorage({
@@ -48,16 +48,16 @@ require('./strategies/kakao')(passport);
 
 passport.serializeUser(function(user, done) {
     console.log("serializeUser");
-    console.log(user.userid);
-    done(null, user.userid);
+    console.log(user.아이디);
+    done(null, user.아이디);
 });
 
-passport.deserializeUser(function(userid, done) {
+passport.deserializeUser(function(아이디, done) {
     console.log("deserializeUser");
-    console.log(userid);
+    console.log(아이디);
 
-    let sql = "select * from account where userid=?";
-    conn.query(sql, [userid], function(err, result) {
+    let sql = "select * from 회원 where 아이디=?";
+    conn.query(sql, [아이디], function(err, result) {
         if (err) return done(err);
         if (result.length > 0) {
             done(null, result[0]);
@@ -68,18 +68,20 @@ passport.deserializeUser(function(userid, done) {
 });
 
 passport.use(new LocalStrategy({
-    usernameField: 'userid', 
-    passwordField: 'userpw', 
-}, function (userid, userpw, done) {
-    let sql = "select * from account where userid=?";
-    conn.query(sql, [userid], function (err, result) {
+    usernameField: '아이디', 
+    passwordField: '비밀번호', 
+}, function (아이디, 비밀번호, done) {
+    let sql = "select * from 회원 where 아이디=?";
+    conn.query(sql, [아이디], function (err, result) {
         if (err) return done(err);
         if (result.length === 0) {
             return done(null, false, { message: 'Incorrect username.' });
         }
 
         const user = result[0];
-        if (user.userpw !== sha(userpw)) { 
+        //if (user.비밀번호 !== sha(비밀번호)) { 
+        if (user.비밀번호 !== 비밀번호) { 
+
             return done(null, false, { message: 'Incorrect password.' });
         }
 
@@ -89,145 +91,41 @@ passport.use(new LocalStrategy({
 
 // app 관련 코드 ---------------------------------------------------------------------------------------------------------
 app.get('/', function(req, res){
-    console.log(req.user);
-    res.render('index.ejs', {user: req.user});
+    res.render('index.ejs');
 });
 
-// 게시물 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-app.get('/enter', function(req, res){
-    res.render('enter.ejs');
-});
-
-app.post('/save', function(req, res){
-    console.log(req.body.title);
-    console.log(req.body.content);
-    console.log(req.body.email);
-    console.log(imagepath);
-
-    let sql = "insert into post (title, content, created, email, imagepath) value(?, ?, NOW(), ?, ?)";
-    let params = [req.body.title, req.body.content, req.body.email, imagepath];
-    conn.query(sql, params, function(err, result) {
+app.get('/order', function(req, res){
+    conn.query("select * from 주문", function(err, rows, fields){
         if (err) throw err;
-        console.log('데이터 추가 성공');
-        res.redirect('/list');
+        console.log(rows);
+    res.render('order.ejs', {data : rows});
     });
 });
-/*
-app.get('/list', function(req, res){
-    conn.query("select * from post", function(err, rows, fields){
+
+app.get('/member', function(req, res){
+    conn.query("select * from 회원", function(err, rows, fields){
         if (err) throw err;
-    //    console.log(rows);
-        console.log("게시물 리스트 불러옴 rows는 너무 길어서 콘솔에서 뺐음")
-    res.render('list.ejs', {data : rows});
+        console.log(rows);
+    res.render('member.ejs', {data : rows});
     });
 });
-*/
-app.get('/list', function(req, res){
-    // 현재 페이지를 가져옵니다. 기본값은 1
-    let page = req.query.page ? parseInt(req.query.page) : 1;
-    let limit = 12; // 한 페이지에 보여줄 게시물 수
-    let offset = (page - 1) * limit; // 시작점
 
-    // 전체 게시물 수를 가져옵니다.
-    conn.query("SELECT COUNT(*) AS count FROM post", function(err, countResult){
+app.get('/product', function(req, res){
+    conn.query("select * from 상품", function(err, rows, fields){
         if (err) throw err;
-
-        let totalPosts = countResult[0].count;
-        let totalPages = Math.ceil(totalPosts / limit);
-
-        // 현재 페이지의 게시물들을 가져옵니다.
-        let sql = "SELECT * FROM post ORDER BY created DESC LIMIT ? OFFSET ?";
-        conn.query(sql, [limit, offset], function(err, rows){
-            if (err) throw err;
-
-            // AJAX 요청이라면, 필요한 부분만 렌더링하여 반환
-            if (req.xhr) {
-                res.render('partials/list_items.ejs', {data: rows});
-            } else {
-                res.render('list.ejs', {
-                    data: rows,
-                    currentPage: page,
-                    totalPages: totalPages
-                });
-            }
-        });
+        console.log(rows);
+    res.render('product.ejs', {data : rows});
     });
 });
 
-
-app.post('/delete', function(req, res){
-    console.log(req.body); 
-    let sql = "delete from post where id = ?";
-    conn.query(sql, [req.body.id], function(err, result) {
+app.get('/store', function(req, res){
+    conn.query("select * from 스토어", function(err, rows, fields){
         if (err) throw err;
-        console.log('삭제 완료');
-    });
-    res.send('삭제 완료');
-});
-
-app.get('/content/:id', function(req, res) {
-    let sql = "select * from post where id = ?";
-    conn.query(sql, [req.params.id], function(err, result) {
-        if (err) {
-            console.error(err);
-            return res.status(500).send('Internal Server Error');
-        }
-
-        if (result.length > 0) {
-            console.log(result);
-            res.render('content.ejs', { data: result[0] });
-        } else {
-            res.status(404).send('Content not found');
-        }
+        console.log(rows);
+    res.render('store.ejs', {data : rows});
     });
 });
 
-
-app.get("/edit/:id", function(req, res){
-    console.log(req.params.id);
-    let sql = "select * from post where id = ?";
-    conn.query(sql, [req.params.id], function(err, result){
-        if (err) throw err;
-        if (result.length > 0) {
-            res.render('edit.ejs', {data : result[0]});
-        } else {
-            console.log(result)
-            res.status(404).send('Post not found');
-        }
-    });
-});
-
-app.post('/edit', upload.single('picture'), function(req, res){
-    console.log(req.body); 
-    let sql = "UPDATE post SET title = ?, content = ?, email = ?, created = NOW(), imagepath = ? WHERE id = ?";
-    let params = [req.body.title, req.body.content, req.body.email, imagepath, req.body.id];
-    conn.query(sql, params, function(err, result) {
-        if (err) throw err;
-        console.log('수정 완료');
-        res.redirect('/list');
-    });
-});
-
-app.post('/photo', upload.single('picture'), function(req, res){
-    imagepath = '\\' + req.file.path;
-    console.log("app.post: " + imagepath);
-    console.log(req.file.path);
-})
-
-app.get('/search', function(req, res){
-    console.log(req.query.value);
-    let sql = "select * from post where title like ? or content like ?";
-
-    const searchValue = `%${req.query.value}%`;
-
-    conn.query(sql, [searchValue, searchValue], function(err, result){
-        if (err) throw err;
-        console.log(result);
-        res.render('sresult.ejs', {data : result});
-    });
-})
-
-// 회원관리 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 app.get("/login", function(req,res){
     console.log(req.session);
     if(req.session.user){
@@ -262,24 +160,31 @@ app.get("/signup", function(req,res){
 });
 
 app.post('/signup', function(req, res){
-    console.log(req.body.userid);
-    console.log(sha(req.body.userpw)); 
-    console.log(req.body.usergroup);
-    console.log(req.body.useremail); 
+    console.log(req.body.아이디);
+    //console.log(sha(req.body.비밀번호)); 
+    console.log(req.body.비밀번호); 
+    console.log(req.body.이름);
+    console.log(req.body.닉네임); 
+    console.log(req.body.생일); 
+    console.log(req.body.전화번호);
+    console.log(req.body.메일); 
+    console.log(req.body.주소);
 
-    let sql = "insert into account (userid, userpw, usergroup, useremail) value(?, ?, ?, ?)";
-    let params = [req.body.userid, sha(req.body.userpw), req.body.usergroup, req.body.useremail];
+    let sql = "insert into 회원 (아이디, 비밀번호, 이름, 닉네임, 생일, 전화번호, 메일, 주소) value(?, ?, ?, ?, ?, ?, ?, ?)";
+    //let params = [req.body.아이디, sha(req.body.비밀번호), req.body.이름, req.body.닉네임];
+    let params = [req.body.아이디, req.body.비밀번호, req.body.이름, req.body.닉네임, req.body.생일, req.body.전화번호, req.body.메일, req.body.주소];
+
     conn.query(sql, params, function(err, result) {
         if (err) throw err;
         console.log('회원가입 성공');
 
         let user = {
-            userid: req.body.userid,
-            usergroup: req.body.usergroup,
-            useremail: req.body.useremail
+            아이디: req.body.아이디,
+            이름: req.body.이름,
+            닉네임: req.body.닉네임
         };
         
-        req.login({ userid: req.body.userid }, function(err) {
+        req.login({ 아이디: req.body.아이디 }, function(err) {
             if (err) return next(err);
             return res.render('index.ejs', { user: req.user });
         });
