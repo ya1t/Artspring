@@ -16,64 +16,43 @@
             <div class="card-header">
               <ul class="nav nav-tabs card-header-tabs">
                 <li class="nav-item">
-                  <a class="nav-link active" aria-current="true" href="#">Active</a>
+                  <a class="nav-link active" aria-current="true" href="#">카테고리에</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#">Link</a>
+                  <a class="nav-link" href="#">따라~~</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+                  <a class="nav-link disabled" aria-disabled="true">각각~~~~</a>
                 </li>
               </ul>
             </div>
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-sm-6 mb-3 mb-sm-0">
-                        <div class="card" style="width: 18rem;">
-                            <img src="<%= data.imagepath %>" class="card-img-top" alt="...">
-                        <div class="card-body">
-                        <h5 class="card-title">Special title treatment</h5>
-                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                        </div>
-                    </div>
-                    </div>
-                    <div class="col-sm-6 mb-3 mb-sm-0">
-                        <div class="card" style="width: 18rem;">
-                            <img src="<%= data.imagepath %>" class="card-img-top" alt="...">
-                        <div class="card-body">
-                        <h5 class="card-title">Special title treatment</h5>
-                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                        </div>
-                    </div>
-                    </div>
-                </div>
-                <P></P>
-                <div class="row">
-                    <div class="col-sm-6 mb-3 mb-sm-0">
-                        <div class="card" style="width: 18rem;">
-                            <img src="<%= data.imagepath %>" class="card-img-top" alt="...">
-                        <div class="card-body">
-                        <h5 class="card-title">Special title treatment</h5>
-                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                        </div>
-                    </div>
-                    </div>
-                    <div class="col-sm-6 mb-3 mb-sm-0">
-                        <div class="card" style="width: 18rem;">
-                            <img src="<%= data.imagepath %>" class="card-img-top" alt="...">
-                        <div class="card-body">
-                        <h5 class="card-title">Special title treatment</h5>
-                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                        </div>
-                    </div>
-                    </div>
-                </div>
 
-            </div>
+            <table class = "table table-hover table-striped text-center container mt-4" style = "border: 1px solid;">
+                <thead>
+                  <tr>         
+                    <th>상품명</th>
+                    <th>가격</th>
+                    <th>이미지</th>
+                  </tr>
+                </thead>
+                <tbody>
+                <% for(let i = 0; i < data.length; i++){ %>
+                  <tr>         
+                    <td><%= data[i].상품명 %></td>
+                    <td><%= data[i].가격 %></td>
+                    <td>
+                        <% if (data[i].imagepath) { %>
+                          <img src="<%= data[i].imagepath %>" width="200">
+                        <% } else { %>
+                          <img src="../public/images/1724125478180.jpg" width="200">
+                        <% } %>
+                      </td>
+                </tr>
+                <% } %>
+                </tbody>            
+              </table>
+            
+        </div>
         </div>
     </div>
           <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>

@@ -25,7 +25,7 @@ const app = express();
 
 // app.use 코드 ---------------------------------------------------------------------------------------------------------
 app.use(express.static("public"));
-app.use("/public/image", express.static(path.join(__dirname, 'public', 'images')));
+app.use("/public/images", express.static(path.join(__dirname, 'public', 'images')));
 
 app.use(session({
     secret : 'mh',
@@ -126,11 +126,24 @@ app.get('/store', function(req, res){
     res.render('store.ejs', {data : rows});
     });
 });
-
+/*
 app.get('/market', function(req, res){
-    res.render('market.ejs');
-    console.log("마켓 상품들 페이지임");
+    conn.query("select * from 상품", function(err, result){
+        if (err) throw err;
+        console.log("상픔 마켓을 잘 가져 옵니까?");
+        res.render('market.ejs', {data : result});
+    });
 });
+*/
+app.get('/market', function(req, res){
+    conn.query("select * from 상품", function(err, rows){
+        if (err) throw err;
+        console.log("상픔 마켓을 잘 가져 옵니까?");
+        console.log({data : rows});
+        res.render('market.ejs', {data : rows});
+    });
+});
+
 
 app.get('/input', function(req, res){
     res.render('input.ejs');
@@ -144,17 +157,20 @@ app.post('/photo', upload.single('picture'), function(req, res){
 })
 
 app.post('/save', function(req, res){
+    console.log(req.body.상품번호);
     console.log(req.body.상품명);
+    console.log(req.body.재고량);
     console.log(req.body.가격);
     console.log(req.body.카테고리);
+    console.log(req.body.상품종류);
     console.log(imagepath);
 
-    let sql = "insert into 상품 (상품명, 가격, 카테고리, imagepath) value(?, ?, ?, ?)";
-    let params = [req.body.상품명, req.body.가격, req.body.카테고리, imagepath];
+    let sql = "insert into 상품 (상품번호, 상품명, 재고량, 가격, 카테고리, 상품종류, imagepath) value(?, ?, ?, ?, ?, ?, ?)";
+    let params = [req.body.상품번호, req.body.상품명, req.body.재고량, req.body.가격, req.body.카테고리, req.body.상품종류, imagepath];
     conn.query(sql, params, function(err, result) {
         if (err) throw err;
         console.log('데이터 추가 성공');
-        res.render('market.ejs', {data : rows});
+        res.redirect('/market');
     });
 });
 
