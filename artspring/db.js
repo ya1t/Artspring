@@ -9,7 +9,7 @@ const conn = mysql.createConnection({
 
 conn.connect((err) => {
     if (err) throw err;
-    console.log("db연결 와 다행이다");
+    console.log("webpages db연결 와 다행이다");
 });
 
 module.exports = conn;
