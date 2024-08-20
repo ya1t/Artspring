@@ -258,12 +258,6 @@ app.get('/naver/callback', passport.authenticate('naver', {
     failureRedirect : "/fail",
 }));
 
-app.get('/naver', passport.authenticate('naver'));
-app.get('/naver/callback', passport.authenticate('naver', {
-    successRedirect : '/',
-    failureRedirect : "/fail",
-}));
-
 app.get('/kakao', passport.authenticate('kakao'));
 app.get('/kakao/callback', passport.authenticate('kakao', {
     successRedirect : '/',
