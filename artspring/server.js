@@ -91,7 +91,8 @@ passport.use(new LocalStrategy({
 
 // app 관련 코드 ---------------------------------------------------------------------------------------------------------
 app.get('/', function(req, res){
-    res.render('index.ejs');
+    console.log(req.user);
+    res.render('index.ejs', {user: req.user});
 });
 
 app.get('/order', function(req, res){
