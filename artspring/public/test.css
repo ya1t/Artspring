@@ -459,7 +459,7 @@ button a:hover {
 
 .search-field {
     width: 100%;
-    padding: 10px 15px 10px 15px; 
+    padding: 10px 40px 10px 15px; 
     border: none;
     border-radius: 25px;
     font-size: 16px;
@@ -478,6 +478,10 @@ button a:hover {
 }
 
 .searchIcon {
+    position: absolute;
+    right: 30px;
+    top: 50%;
+    transform: translateY(-50%);
     width: 25px;
     height: 25px;
     background: none;
@@ -489,8 +493,8 @@ button a:hover {
 }
 
 .searchIcon img {
-    width: 25px;
-    height: 25px;
+    width: 100%;
+    height: 100%;
     object-fit: contain;
     display: block;
 }
