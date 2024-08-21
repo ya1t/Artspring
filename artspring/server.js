@@ -95,6 +95,12 @@ app.get('/', function(req, res){
     res.render('index.ejs', {user: req.user});
 });
 
+app.get('/main', function(req, res){
+    console.log("메인 페이지");
+    res.render('main.ejs');
+});
+
+
 app.get('/order', function(req, res){
     conn.query("select * from 주문", function(err, rows, fields){
         if (err) throw err;
