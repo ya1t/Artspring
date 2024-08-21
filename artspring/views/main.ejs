@@ -1,32 +1,117 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Home</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="test.css">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Home</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="test.css">
 
-  </head>
-  <body>
+</head>
+<body>
 
-    <%- include('menu.html') %>
+  <%- include('menu.html') %>
 
-    <div class="container">
-        <div class="section headerImage">
-            <img src="../public/images/gradient2.png">
-            <div class="textSection">
-                <div class="textContent">
-                    <div class="mainHeading">앗!스프링!<br>Artspring</div>
-                    <div class="subHeading">꽃 피우는 날을 기다리는 당신에게 봄을 선물합니다.</div>
-                </div>
-                <a href="/input">
-                    <div class="discoverButton">상품 등록하기</div>
-                </a>
-                <!--버튼 텍스트에 맞춰서 왼쪽 정렬시키기-->
+  <div class="container">
+    <div class="section headerImage">
+        <img src="../public/images/gradient2.png">
+        <div class="textSection">
+            <div class="textContent">
+                <div class="mainHeading">앗!스프링!<br>Artspring</div>
+                <div class="subHeading">꽃 피우는 날을 기다리는 당신에게 봄을 선물합니다.</div>
             </div>
+            <a href="/input">
+                <div class="discoverButton">상품 등록하기</div>
+            </a>
+            <!--버튼 텍스트에 맞춰서 왼쪽 정렬시키기-->
         </div>
-      </body>
+    </div>
+
+    <div class="section">
+      <div class="featureSection">
+          <div class="featureImage">
+              <div class="imageInner"></div>
+          </div>
+          <div class="featureText">
+              <div class="textContent">
+                  <div class="mainHeading">이번 주 소개 작가</div>
+                  <div class="subHeading">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sapien, est felis, sagittis viverra nulla mattis scelerisque. Eget cras integer.</div>
+              </div>
+          </div>
+      </div>
+    </div>
+
+  <div class="section">
+      <div class="popularSection">
+          <div class="popularTitle">Most Popular</div>
+          <div class="popularSubtitle">이번 주 가장 인기 있는 제품</div>
+      </div>
+      <div class="productsSection">
+          <div class="productCard">
+              <div class="productImage">
+                  <img src="../images/캐릭터폰케이스_1.webp">
+              </div>
+              <div class="productInfo">
+                  <div class="productName">뫄뫄 폰케이스</div>
+                  <div class="productDescription">뫄뫄 폰케이스 설명 뫄뫄 폰케이스 설명 뫄뫄 폰케이스 설명 뫄뫄 폰케이스 설명</div>
+                  <div class="productActions">
+                      <div class="orderButton">주문하기</div>
+                      <div class="priceTag">$20</div>
+                  </div>
+              </div>
+          </div>
+          <div class="productCard">
+              <div class="productImage">
+                  <img src="../images/락앤롤티셔츠.webp">
+              </div>
+              <div class="productInfo">
+                  <div class="productName">롸롸 티셔츠</div>
+                  <div class="productDescription">롸롸 티셔츠 설명 롸롸 티셔츠 설명 롸롸 티셔츠 설명 롸롸 티셔츠 설명 </div>
+                  <div class="productActions">
+                      <div class="orderButton">주문하기</div>
+                      <div class="priceTag">$20</div>
+                  </div>
+              </div>
+          </div>
+          <div class="productCard">
+              <div class="productImage">
+                  <img src="../images/선인장키링.webp">
+              </div>
+              <div class="productInfo">
+                  <div class="productName">솨솨 키링</div>
+                  <div class="productDescription">솨솨 키링 설명 솨솨 키링 설명 솨솨 키링 설명 솨솨 키링 설명 </div>
+                  <div class="productActions">
+                      <div class="orderButton">주문하기</div>
+                      <div class="priceTag">$20</div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+  <div class="section">
+      <div class="serviceSection">
+          <div class="serviceTitle">아트 스타일</div>
+          <div class="serviceSubtitle">좋아하는 스타일을 고르세요</div>
+      </div>
+
+      <div class="pagination">
+          <div class="pageArrow leftArrow"></div>
+          <div class="pageArrow rightArrow"></div>
+      </div>
+
+      <div class="categorySection">
+          <div class="categoryItem">모던</div>
+          <div class="categoryItem">로맨틱</div>
+          <div class="categoryItem">실사</div>
+          <div class="categoryItem">키치</div>
+          <div class="categoryItem">큐트</div>
+          <div class="categoryItem">캐릭터</div>
+      </div>
+  </div>
+
+  <%- include('footer.html') %>
+
+</body>
 </html>

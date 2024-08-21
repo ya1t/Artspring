@@ -1,36 +1,38 @@
 body {
     margin: 0;
     font-family: "Noto Sans KR", sans-serif;
-    padding-top: 100px;
     line-height: 1.6;
 }
 
 .container {
-    width: 90%;
-    max-width: 1440px;
+    width: 100%;
+    max-width: auto;
     margin: 0 auto;
-    position: relative;
+    position: absolute;
+    margin-top: 60px;
     background: white;
-    padding: 0 5%;
+    padding: 0;
 }
 
 .section {
-    margin-bottom: 60px;
+    margin-bottom: 100px;
+    position: relative;
 }
 
 .headerImage {
     width: 100%;
-    height: 726px;
+    height: 700px;
     position: relative;
     overflow: hidden;
     background-position: center;
+    display: block;
 }
 
 
 .textSection {
     position: absolute; 
     top: 50%;
-    left: 30%;
+    left: 50%;
     transform: translate(-50%, -50%);
     display: flex;
     flex-direction: column;
@@ -43,7 +45,7 @@ body {
     display: flex;
     flex-direction: column;
     gap: 32px;
-    text-align: left;
+    text-align: center;
 }
 
 .mainHeading {
@@ -74,7 +76,7 @@ body {
 
 .featureSection {
     width: 100%;
-    height: 601px;
+    height: 600px;
     background: #000000;
     margin-top: 50px; 
     display: flex;
@@ -239,20 +241,28 @@ body {
 }
 
 .menuBar {
-    width: 90%;
-    max-width: 1440px;
-    height: 60px;
+    width: 100%;
+    height: 80px;
     background: white;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-    padding: 20px 5%;
     position: fixed; 
     top: 0;
     left: 50%;
     transform: translateX(-50%);
     margin: auto;
     z-index: 1000;
+}
+
+.menuContainer {
+    width: 90%;
+    height: 100%;
+    top: 50%;
+    left: 50%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .logo {
@@ -372,50 +382,6 @@ body {
     border-radius: 100px;
 }
 
-.footerSection {
-    display: flex;
-    gap: 40px;
-    justify-content: center;
-    background: #F4F5F6;
-    padding: 40px 5%;
-}
-
-.footerColumn {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.footerHeading {
-    font-size: 24px;
-    font-weight: 500;
-    color: #141416;
-}
-
-.footerText {
-    font-size: 17px;
-    color: #353945;
-}
-
-.footerBottom {
-    width: 100%;
-    background: #F4F5F6;
-    display: flex;
-    justify-content: space-between;
-    padding: 20px 5%;
-}
-
-.languageSwitcher {
-    display: flex;
-    gap: 10px;
-    align-items: center;
-    color: #95A1BB;
-    font-size: 14px;
-}
-.footerCopy {
-    color: #95A1BB;
-    font-size: 14px;
-}
 
 /*버튼 설정하기*/
 button {
@@ -459,7 +425,7 @@ button a:hover {
 
 .search-field {
     width: 100%;
-    padding: 10px 40px 10px 15px; 
+    padding: 13px 40px 13px 15px; 
     border: none;
     border-radius: 25px;
     font-size: 16px;
@@ -487,14 +453,14 @@ button a:hover {
     background: none;
     border: none;
     cursor: pointer;
-    display: flex;
+    display: block;
     justify-content: center;
     align-items: center;
 }
 
 .searchIcon img {
-    width: 100%;
-    height: 100%;
+    width: 25px;
+    height: 25px;
     object-fit: contain;
     display: block;
 }
