@@ -150,7 +150,6 @@ app.get('/market', function(req, res){
     });
 });
 
-
 app.get('/input', function(req, res){
     res.render('input.ejs');
 });
