@@ -154,6 +154,10 @@ app.get('/input', function(req, res){
     res.render('input.ejs');
 });
 
+app.get('/input2', function(req, res){
+    res.render('input2.ejs');
+});
+
 
 app.post('/photo', upload.single('picture'), function(req, res){
     imagepath = '\\' + req.file.path;
