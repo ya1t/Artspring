@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>상품 등록</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="test.css">
+    <style>
+        table {
+            
+        }
+    </style>
+</head>
+<body>
+
+    <%- include('menu.html') %>
+
+    <div class="container">
+        <div id="wrapper">
+            <div class="section">
+                <h1>상품</h1>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>상품번호</th>
+                            <th>상품명</th>
+                            <th>재고량</th>
+                            <th>가격</th>
+                            <th>카테고리</th>
+                            <th>상품종류</th>
+                        </tr>
+                
+                    </thead>
+                    <tbody>
+                        <% for(let i = 0; i < data.length; i++){ %>
+                            <tr>         
+                              <td><%= data[i].상품번호 %></a></td>
+                              <td><%= data[i].상품명 %></td>
+                              <td><%= data[i].재고량 %></a></td>
+                              <td><%= data[i].가격 %></td>
+                              <td><%= data[i].카테고리 %></a></td>
+                              <td><%= data[i].상품종류 %></td>
+                            </tr>
+                        <% } %>
+                      </tbody>
+                
+                </table>
+            </div>
+            
+
+        </div>
+    </div>
+
+        <%- include('footer.html') %>
+</body>
+</html>
+    

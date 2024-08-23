@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>상품 등록</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="test.css">
+</head>
+<body>
+
+    <%- include('menu.html') %>
+
+    <div class="container mt-4">
+        <form action="/save" method="post">
+            <div class="form-group">
+            <label>상품명</label>
+            <input type="text" name="상품명" class="form-control">
+            </div>
+            <p></p>
+
+            <div class="form-group">
+            <label>재고량</label>
+            <input type="number" name="재고량" class="form-control">
+            </div>
+            <p></p>
+
+            <div class="form-group">
+            <label>가격</label>
+            <input type="number" name="가격" class="form-control">
+            </div>
+            <p></p>
+
+            <div class="input-group mb-3">
+                <label class="input-group-text" for="inputGroupSelect01">카테고리</label>
+                <select class="form-select" id="inputGroupSelect01" name="카테고리" onchange="updateProductTypes()">
+                <option selected></option>
+                  <option value="인테리어">인테리어</option>
+                  <option value="문구류">문구류</option>
+                  <option value="패션잡화">패션잡화</option>
+                  <option value="생활용품">생활용품</option>
+                  <option value="디지털 악세서리">디지털 악세서리</option>
+                </select>
+            </div>
+            <p></p>
+
+            <div class="input-group mb-3">
+                <label class="input-group-text" for="inputGroupSelect02">상품종류</label>
+                <select class="form-select" id="inputGroupSelect02" name="상품종류">
+                  <option selected></option>
+                  <!-- 옵션은 동적으로 추가 -->
+                </select>
+            </div>
+            <p></p>
+
+            <button type="submit" class="btn btn-warning" style="float:right;">저장</button>
+
+        </form>
+    </div>
+
+        <div class="container mt-3">
+        <form action="/photo" method="POST" enctype="multipart/form-data">
+            <input type="file" name="picture" accept="image/*" class="btn btn-outline-primary"></input>
+            <button type="submit" class="btn btn-primary">첨부</button>
+        </form>
+        </div>
+
+        <%- include('footer.html') %>
+
+
+        <script>
+            const productTypes = {
+                "인테리어": [
+                    { text: "포스터", value: "포스터" },
+                    { text: "오브제", value: "오브제" },
+                    { text: "소품", value: "소품" }
+                ],
+                "문구류": [
+                    { text: "펜", value: "펜" },
+                    { text: "노트", value: "노트" },
+                    { text: "스티커", value: "스티커" },
+                    { text: "사무용품", value: "사무용품" }
+                ],
+                "패션잡화": [
+                    { text: "가방", value: "가방" },
+                    { text: "지갑", value: "지갑" },
+                    { text: "모자", value: "모자" },
+                    { text: "악세서리", value: "악세서리" }
+                ],
+                "생활용품": [
+                    { text: "식기류", value: "식기류" },
+                ],
+                "디지털 악세서리": [
+                    { text: "폰케이스", value: "폰케이스" },
+                    { text: "태블릿 케이스", value: "태블릿 케이스" },
+                    { text: "이어폰 케이스", value: "이어폰 케이스" }
+                ]
+            };
+    
+            function updateProductTypes() {
+                const categorySelect = document.getElementById("inputGroupSelect01");
+                const productTypeSelect = document.getElementById("inputGroupSelect02");
+                const selectedCategory = categorySelect.value;
+    
+                productTypeSelect.innerHTML = "";
+    
+                if (selectedCategory && productTypes[selectedCategory]) {
+                    const options = productTypes[selectedCategory];
+                    options.forEach(option => {
+                        const newOption = document.createElement("option");
+                        newOption.value = option.value;
+                        newOption.textContent = option.text;
+                        productTypeSelect.appendChild(newOption);
+                    });
+                }
+            }
+        </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  </body>
+</html>
