@@ -125,14 +125,6 @@ app.get('/product', function(req, res){
     });
 });
 
-app.get('/product2', function(req, res){
-    conn.query("select * from 상품", function(err, rows, fields){
-        if (err) throw err;
-        console.log(rows);
-    res.render('product2.ejs', {data : rows});
-    });
-});
-
 
 app.get('/store', function(req, res){
     conn.query("select * from 스토어", function(err, rows, fields){

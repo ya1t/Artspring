@@ -8,6 +8,52 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="test.css">
+    <style>
+        .input-container {
+            position: relative;
+            width: 600px;
+            margin-bottom: 20px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .input-container label {
+            font-size: 16px;
+            color: black;
+            margin-bottom: 5px;
+            pointer-events: none;
+        }
+
+        .input-container input,
+        .input-container select {
+            width: 100%;
+            padding: 12px 20px;
+            font-size: 16px;
+            border: 2px solid black;
+            border-radius: 5px;
+            background-color: black;
+            color: white;
+            outline: none;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+            margin-bottom: 15px; 
+        }
+
+        .input-container input:focus,
+        .input-container select:focus,
+        .input-container input:not(:placeholder-shown),
+        .input-container select:not(:placeholder-shown) {
+            border-color: #007BFF;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+            background-color: white;
+            color: black; 
+        }
+        .input-container select {
+            padding: 10px; 
+        }
+
+    </style>
 </head>
 <body>
 
@@ -15,48 +61,55 @@
 
     <div class="container">
         <div id="wrapper">
+            <div class="section notice">
+                <h1>입력필드 스타일 고치기~~<br>스타일시트 어려워~~~~</h1>
+            </div>
+
             <div class="section">
-                <form action="/save" method="post">
-                    <label>상품명</label>
-                    <input type="text" name="상품명" class="form-control">
-                    <p></p>
+                <div class="input-container">
+                    <form action="/save" method="post">
+                        <label>상품명</label>
+                        <input type="text" name="상품명" class="form-control">
+                        <p></p>
 
-                    <label>재고량</label>
-                    <input type="number" name="재고량" class="form-control">
-                    <p></p>
+                        <label>재고량</label>
+                        <input type="number" name="재고량" class="form-control">
+                        <p></p>
 
-                    <label>가격</label>
-                    <input type="number" name="가격" class="form-control">
-                    <p></p>
+                        <label>가격</label>
+                        <input type="number" name="가격" class="form-control">
+                        <p></p>
 
-                        <label class="input-group-text" for="inputGroupSelect01">카테고리</label>
-                        <select class="form-select" id="inputGroupSelect01" name="카테고리" onchange="updateProductTypes()">
-                        <option selected></option>
-                        <option value="인테리어">인테리어</option>
-                        <option value="문구류">문구류</option>
-                        <option value="패션잡화">패션잡화</option>
-                        <option value="생활용품">생활용품</option>
-                        <option value="디지털 악세서리">디지털 악세서리</option>
-                        </select>
-                    <p></p>
+                            <label class="input-group-text" for="inputGroupSelect01">카테고리</label>
+                            <select class="form-select" id="inputGroupSelect01" name="카테고리" onchange="updateProductTypes()">
+                            <option selected></option>
+                            <option value="인테리어">인테리어</option>
+                            <option value="문구류">문구류</option>
+                            <option value="패션잡화">패션잡화</option>
+                            <option value="생활용품">생활용품</option>
+                            <option value="디지털 악세서리">디지털 악세서리</option>
+                            </select>
+                        <p></p>
 
-                        <label class="input-group-text" for="inputGroupSelect02">상품종류</label>
-                        <select class="form-select" id="inputGroupSelect02" name="상품종류">
-                        <option selected></option>
-                        <!-- 옵션은 동적으로 추가 -->
-                        </select>
-                    <p></p>
+                            <label class="input-group-text" for="inputGroupSelect02">상품종류</label>
+                            <select class="form-select" id="inputGroupSelect02" name="상품종류">
+                            <option selected></option>
+                            <!-- 옵션은 동적으로 추가 -->
+                            </select>
+                        <p></p>
 
-                    <button type="submit" class="btn btn-warning" style="float:right;">저장</button>
-                </form>
+                        <button type="submit" class="btn btn-warning" style="float:right;">저장</button>
+                    </form>
 
-                <form action="/photo" method="POST" enctype="multipart/form-data">
-                    <input type="file" name="picture" accept="image/*"></input>
-                    <button type="submit">첨부</button>
-                </form>
+                    <form action="/photo" method="POST" enctype="multipart/form-data">
+                        <input type="file" name="picture" accept="image/*"></input>
+                        <button type="submit">첨부</button>
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
-
+    
     <%- include('footer.html') %>
 
 
