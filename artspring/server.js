@@ -273,6 +273,7 @@ app.get('/kakao/callback', passport.authenticate('kakao', {
 // 서버 작동 콘솔 -------------------------------------------------------------------------------------------------------
 app.listen(8888, function(){
     console.log("포트 8888으로 서버 대기중...");
-    console.log("http://localhost:8888/")
+    console.log("http://localhost:8888/");
+    console.log("http://localhost:8888/main")
 //    console.log("http://192.168.0.71:8888/")
 });
