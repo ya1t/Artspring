@@ -155,7 +155,6 @@ app.get('/input', function(req, res){
     res.render('input.ejs');
 });
 
-
 app.post('/photo', upload.single('picture'), function(req, res){
     imagepath = '\\' + req.file.path;
     console.log("app.post: " + imagepath);
@@ -245,6 +244,65 @@ app.post('/signup', function(req, res){
         });
     });
 });
+
+app.get("/cart", function(req,res){
+    res.render("cart.ejs");
+});
+
+
+/*
+app.get('/cart', function(req, res){
+    const 아이디 = req.session.아이디;
+
+    const query = `
+        SELECT 상품.상품명, 상품.imagepath, 상품.가격, 장바구니.수량 
+        FROM 장바구니
+        JOIN 상품 ON 장바구니.상품번호 = 상품.상품번호 
+        WHERE 장바구니.아이디 = ?;
+    `;
+
+    conn.query(query, [userId], function(err, rows) {
+        if (err) throw err;
+
+        // 총 상품 금액 계산
+        const totalPrice = rows.reduce((sum, item) => sum + 상품.가격 * 장바구니.수량, 0);
+
+        // EJS 템플릿에 데이터 전달
+        res.render('cart.ejs', { data: rows, totalPrice: totalPrice });
+    });
+});
+
+// 상품 수량 수정 라우트
+app.post('/cart/update/:상품번호', (req, res) => {
+    const { 상품번호 } = req.params;
+    const { 수량 } = req.body;
+    const userId = req.session.userId;
+
+    const query = `
+        UPDATE cart SET quantity = ? WHERE user_id = ? AND product_id = ?;
+    `;
+
+    db.query(query, [quantity, userId, productId], (err, result) => {
+        if (err) throw err;
+        res.redirect('/cart');
+    });
+});
+
+// 상품 삭제 라우트
+app.post('/cart/delete/:상품번호', (req, res) => {
+    const { 상품번호 } = req.params;
+    const userId = req.session.userId;
+
+    const query = `
+        DELETE FROM cart WHERE user_id = ? AND product_id = ?;
+    `;
+
+    db.query(query, [userId, 상품번호], (err, result) => {
+        if (err) throw err;
+        res.redirect('/cart');
+    });
+});
+*/
 
 // 플랫폼 인증 ---------------------------------------------------------------------------------------------------------
 app.get('/facebook', passport.authenticate('facebook'));

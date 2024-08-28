@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>상품 등록</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="test.css">
+</head>
+<body>
+
+    <%- include('menu.html') %>
+
+    <div class="container">
+        <div id="wrapper">
+            <div class="sectionCenter">
+                <h1>장바구니</h1>
+                <div class="notice">장바구니 진짜 어렵다</div>
+<!--
+                <table>
+                    <thead>
+                        <tr>
+                            <th>선택</th>
+                            <th>이미지</th>
+                            <th>이름</th>
+                            <th>Vendor</th>
+                            <th>가격</th>
+                            <th>개수</th>
+                            <th>총 금액</th>
+                            <th>액션</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <% products.forEach(product => { %>
+                            <tr>
+                                <td><input type="checkbox" class="product-check" data-price="<%= 상품.가격 * 장바구니.수량 %>" /></td>
+                                <td><img src="<%= data[i].imagepath %>" alt="<%= 상품.상품명 %>" width="50"></td>
+                                <td><%= product.name %></td>
+                                <td><%= product.vendor %></td>
+                                <td><%= product.price.toFixed(2) %></td>
+                                <td>
+                                    <form action="/cart/update/<%= 상품.상품번호 %>" method="post">
+                                        <input type="number" name="quantity" value="<%= 장바구니.수량 %>" min="1" />
+                                        <button type="submit">Update</button>
+                                    </form>
+                                </td>
+                                <td><%= (product.price * product.quantity).toFixed(2) %></td>
+                                <td>
+                                    <form action="/cart/delete/<%= 상품.상품번호 %>" method="post">
+                                        <button type="submit">Delete</button>
+                                    </form>
+                                </td>
+                            </tr>
+                            <% }) %>
+                    </tbody>
+                </table>
+                <h2>Total: <span id="total-price"><%= totalPrice.toFixed(2) %></span> 원</h2>
+                <button type="submit">Checkout</button>
+            -->
+
+        </div>
+    </div>
+
+        <%- include('footer.html') %>
+<!--
+    <script>
+        // 상품 선택시 금액 합계 업데이트
+        const checkboxes = document.querySelectorAll('.product-check');
+        const totalPriceElement = document.getElementById('total-price');
+
+        checkboxes.forEach(checkbox => {
+            checkbox.addEventListener('change', updateTotal);
+        });
+
+        function updateTotal() {
+            let sum = 0;
+            checkboxes.forEach(checkbox => {
+                if (checkbox.checked) {
+                    sum += parseFloat(checkbox.dataset.price);
+                }
+            });
+            totalPriceElement.textContent = sum.toFixed(2) + ' 원';
+        }
+    </script>
+    -->
+</body>
+</html>
+    
