@@ -245,6 +245,11 @@ app.post('/signup', function(req, res){
     });
 });
 
+app.get("/aboutUs", function(req,res){
+    res.render("aboutUs.ejs");
+});
+
+
 app.get("/cart", function(req,res){
     res.render("cart.ejs");
 });

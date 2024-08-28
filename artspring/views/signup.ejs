@@ -60,7 +60,7 @@
                         <input type="text" name = "주소" class = "form-control" required>
                         </div><p></p>
                         
-                        <button type="submit" class="btn btn-primary" style="float:right;">가입</button>
+                        <button type="submit" class="btn get" style="float:right;">가입</button>
                     </form>
                     
                 </div>
@@ -70,11 +70,11 @@
 
         <%- include('footer.html') %>
 
-        <% if (typeof error !== 'undefined') { %>
-            <script>
-                alert("<%= error %>");
-            </script>
-        <% } %>
+<% if (typeof error !== 'undefined') { %>
+    <script>
+        alert("<%= error %>");
+    </script>
+<% } %>
     
 </body>
 </html>
