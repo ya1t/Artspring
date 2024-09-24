@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>상품 등록</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <%- include('menu.html') %>
+
+    <div class="container">
+        <div id="wrapper">
+            <div class="sectionCenter">
+                <h1>장바구니</h1>
+                <div class="notice">장바구니 진짜 어렵다<br>서버와 테이블 손봐서 잘 가져오기</div>
+            </div>
+
+            <div class="centerHorizontal">
+                <div class="cart-item">
+                    <img src="https://via.placeholder.com/100" alt="Product Image">
+                    <div class="cart-item-details">
+                        <h2>Product Name</h2>
+                        <p>Product description goes here.</p>
+                    </div>
+                    <div class="cart-item-price">$10.00</div>
+                    <div class="cart-item-quantity">
+                        <input type="number" value="1" min="1" max="10">
+                    </div>
+                    <div class="cart-item-total">$10.00</div>
+                </div>
+                <div class="cart-item">
+                    <img src="https://via.placeholder.com/100" alt="Product Image">
+                    <div class="cart-item-details">
+                        <h2>Product Name</h2>
+                        <p>Product description goes here.</p>
+                    </div>
+                    <div class="cart-item-price">$15.00</div>
+                    <div class="cart-item-quantity">
+                        <input type="number" value="1" min="1" max="10">
+                    </div>
+                    <div class="cart-item-total">$15.00</div>
+                </div>
+                <div class="total">Total: $25.00</div>
+                <button class="checkout-btn">Proceed to Checkout</button>
+            </div>
+        </div>
+    </div>
+
+        <%- include('footer.html') %>
+</body>
+</html>

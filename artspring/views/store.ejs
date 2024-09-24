@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>상품 등록</title>
+    <title>스토어</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
@@ -30,11 +30,11 @@
                       <tbody>
                         <% for(let i = 0; i < data.length; i++){ %>
                             <tr>         
-                              <td><%= data[i].상호명 %></a></td>
-                              <td><%= data[i].스토어번호 %></td>
-                              <td><%= data[i].판매자주소 %></a></td>
-                              <td><%= data[i].판매자 %></td>
-                              <td><%= data[i].판매자메일 %></a></td>
+                              <td><%= data[i].store_name %></td> <!-- 상호명 -->
+                              <td><%= data[i].store_id %></td> <!-- 스토어번호 -->
+                              <td><%= data[i].seller_address %></td> <!-- 판매자주소 -->
+                              <td><%= data[i].seller_name %></td> <!-- 판매자 -->
+                              <td><%= data[i].seller_email %></td> <!-- 판매자메일 -->
                             </tr>
                         <% } %>
                       </tbody>
@@ -43,7 +43,7 @@
         </div>
     </div>
 
-        <%- include('footer.html') %>
+    <%- include('footer.html') %>
+
 </body>
 </html>
-    

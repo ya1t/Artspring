@@ -6,7 +6,7 @@ const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const LocalStrategy = require("passport-local").Strategy;
 const conn = require('./db');
-// const sha = require('sha256');
+//const sha = require('sha256');
 
 let multer = require('multer');
 let storage = multer.diskStorage({
@@ -18,7 +18,7 @@ let storage = multer.diskStorage({
     }
 });
 let upload = multer({storage : storage});
-let image_path = '';
+let imagepath = '';
 const path = require('path');
 
 const app = express();
@@ -49,16 +49,16 @@ require('./strategies/kakao')(passport);
 
 passport.serializeUser(function(user, done) {
     console.log("serializeUser");
-    console.log(user.user_id);
-    done(null, user.user_id);
+    console.log(user.아이디);
+    done(null, user.아이디);
 });
 
-passport.deserializeUser(function(user_id, done) {
+passport.deserializeUser(function(아이디, done) {
     console.log("deserializeUser");
-    console.log(user_id);
+    console.log(아이디);
 
-    let sql = "select * from member where user_id=?";
-    conn.query(sql, [user_id], function(err, result) {
+    let sql = "select * from 회원 where 아이디=?";
+    conn.query(sql, [아이디], function(err, result) {
         if (err) return done(err);
         if (result.length > 0) {
             done(null, result[0]);
@@ -69,19 +69,20 @@ passport.deserializeUser(function(user_id, done) {
 });
 
 passport.use(new LocalStrategy({
-    usernameField: 'user_id', 
-    passwordField: 'password', 
-}, function (user_id, password, done) {
-    let sql = "select * from member where user_id=?";
-    conn.query(sql, [user_id], function (err, result) {
+    usernameField: '아이디', 
+    passwordField: '비밀번호', 
+}, function (아이디, 비밀번호, done) {
+    let sql = "select * from 회원 where 아이디=?";
+    conn.query(sql, [아이디], function (err, result) {
         if (err) return done(err);
         if (result.length === 0) {
             return done(null, false, { message: 'Incorrect username.' });
         }
 
         const user = result[0];
-        // if (user.password !== sha(password)) {
-        if (user.password !== password) { 
+        //if (user.비밀번호 !== sha(비밀번호)) { 
+        if (user.비밀번호 !== 비밀번호) { 
+
             return done(null, false, { message: 'Incorrect password.' });
         }
 
@@ -96,46 +97,56 @@ app.get('/', function(req, res){
 });
 
 app.get('/main', function(req, res){
-    console.log("Main Page");
+    console.log("메인 페이지");
     res.render('main.ejs');
 });
 
+
 app.get('/order', function(req, res){
-    conn.query("select * from `order`", function(err, rows, fields){
+    conn.query("select * from 주문", function(err, rows, fields){
         if (err) throw err;
         console.log(rows);
-        res.render('order.ejs', {data : rows});
+    res.render('order.ejs', {data : rows});
     });
 });
 
 app.get('/member', function(req, res){
-    conn.query("select * from member", function(err, rows, fields){
+    conn.query("select * from 회원", function(err, rows, fields){
         if (err) throw err;
         console.log(rows);
-        res.render('member.ejs', {data : rows});
+    res.render('member.ejs', {data : rows});
     });
 });
 
 app.get('/product', function(req, res){
-    conn.query("select * from product", function(err, rows, fields){
+    conn.query("select * from 상품", function(err, rows, fields){
         if (err) throw err;
         console.log(rows);
-        res.render('product.ejs', {data : rows});
+    res.render('product.ejs', {data : rows});
     });
 });
+
 
 app.get('/store', function(req, res){
-    conn.query("select * from store", function(err, rows, fields){
+    conn.query("select * from 스토어", function(err, rows, fields){
         if (err) throw err;
         console.log(rows);
-        res.render('store.ejs', {data : rows});
+    res.render('store.ejs', {data : rows});
     });
 });
-
+/*
 app.get('/market', function(req, res){
-    conn.query("select * from product", function(err, rows){
+    conn.query("select * from 상품", function(err, result){
         if (err) throw err;
-        console.log("Loaded market successfully.");
+        console.log("상픔 마켓을 잘 가져 옵니까?");
+        res.render('market.ejs', {data : result});
+    });
+});
+*/
+app.get('/market', function(req, res){
+    conn.query("select * from 상품", function(err, rows){
+        if (err) throw err;
+        console.log("상픔 마켓을 잘 가져 옵니까?");
         console.log({data : rows});
         res.render('market.ejs', {data : rows});
     });
@@ -146,36 +157,37 @@ app.get('/input', function(req, res){
 });
 
 app.post('/photo', upload.single('picture'), function(req, res){
-    image_path = '\\' + req.file.path;
-    console.log("app.post: " + image_path);
+    imagepath = '\\' + req.file.path;
+    console.log("app.post: " + imagepath);
     console.log(req.file.path);
 })
 
 app.post('/save', function(req, res){
-    console.log(req.body.product_id);
-    console.log(req.body.product_name);
-    console.log(req.body.stock);
-    console.log(req.body.price);
-    console.log(req.body.category);
-    console.log(req.body.product_type);
-    console.log(image_path);
+    console.log(req.body.상품번호);
+    console.log(req.body.상품명);
+    console.log(req.body.재고량);
+    console.log(req.body.가격);
+    console.log(req.body.카테고리);
+    console.log(req.body.상품종류);
+    console.log(imagepath);
 
-    let sql = "insert into product (product_id, product_name, stock, price, category, product_type, image_path) value(?, ?, ?, ?, ?, ?, ?)";
-    let params = [req.body.product_id, req.body.product_name, req.body.stock, req.body.price, req.body.category, req.body.product_type, image_path];
+    let sql = "insert into 상품 (상품번호, 상품명, 재고량, 가격, 카테고리, 상품종류, imagepath) value(?, ?, ?, ?, ?, ?, ?)";
+    let params = [req.body.상품번호, req.body.상품명, req.body.재고량, req.body.가격, req.body.카테고리, req.body.상품종류, imagepath];
     conn.query(sql, params, function(err, result) {
         if (err) throw err;
-        console.log('Product added successfully');
+        console.log('데이터 추가 성공');
         res.redirect('/market');
     });
 });
 
+
 app.get("/login", function(req,res){
     console.log(req.session);
     if(req.session.user){
-        console.log('Session maintained');
+        console.log('세션 유지');
         res.render('index.ejs', {user : req.session.user});
     }else{
-        res.render("login.ejs");
+    res.render("login.ejs");
     }
 });
 
@@ -189,10 +201,11 @@ app.post(
         console.log(req.user);
         res.render("index.ejs", {user : req.user});
     },
+
 );
 
 app.get("/logout", function(req,res){
-    console.log("Logout");
+    console.log("로그아웃");
     req.session.destroy();
     res.render('index.ejs' , {user : null});
 });
@@ -202,29 +215,31 @@ app.get("/signup", function(req,res){
 });
 
 app.post('/signup', function(req, res){
-    console.log(req.body.user_id);
-    console.log(req.body.password); 
-    console.log(req.body.name);
-    console.log(req.body.nickname); 
-    console.log(req.body.birthdate); 
-    console.log(req.body.phone);
-    console.log(req.body.email); 
-    console.log(req.body.address);
+    console.log(req.body.아이디);
+    //console.log(sha(req.body.비밀번호)); 
+    console.log(req.body.비밀번호); 
+    console.log(req.body.이름);
+    console.log(req.body.닉네임); 
+    console.log(req.body.생일); 
+    console.log(req.body.전화번호);
+    console.log(req.body.메일); 
+    console.log(req.body.주소);
 
-    let sql = "insert into member (user_id, password, name, nickname, birthdate, phone, email, address) value(?, ?, ?, ?, ?, ?, ?, ?)";
-    let params = [req.body.user_id, req.body.password, req.body.name, req.body.nickname, req.body.birthdate, req.body.phone, req.body.email, req.body.address];
+    let sql = "insert into 회원 (아이디, 비밀번호, 이름, 닉네임, 생일, 전화번호, 메일, 주소) value(?, ?, ?, ?, ?, ?, ?, ?)";
+    //let params = [req.body.아이디, sha(req.body.비밀번호), req.body.이름, req.body.닉네임];
+    let params = [req.body.아이디, req.body.비밀번호, req.body.이름, req.body.닉네임, req.body.생일, req.body.전화번호, req.body.메일, req.body.주소];
 
     conn.query(sql, params, function(err, result) {
         if (err) throw err;
-        console.log('Signup successful');
+        console.log('회원가입 성공');
 
         let user = {
-            user_id: req.body.user_id,
-            name: req.body.name,
-            nickname: req.body.nickname
+            아이디: req.body.아이디,
+            이름: req.body.이름,
+            닉네임: req.body.닉네임
         };
         
-        req.login({ user_id: req.body.user_id }, function(err) {
+        req.login({ 아이디: req.body.아이디 }, function(err) {
             if (err) return next(err);
             return res.render('index.ejs', { user: req.user });
         });
@@ -235,107 +250,65 @@ app.get("/aboutUs", function(req,res){
     res.render("aboutUs.ejs");
 });
 
-/*
+
 app.get("/cart", function(req,res){
     res.render("cart.ejs");
 });
-*/
 
-// 장바구니 보기
-app.get('/cart', function(req, res) {
-    // 세션에서 로그인한 사용자의 ID를 가져옴
-    const user_id = req.session.user_id; // 세션에 저장된 user_id 사용
 
-    // 로그인 여부에 따라 다르게 처리
-    if (!user_id) {
-        // 로그인하지 않은 경우
-        res.render('cart.ejs', { cartData: null, totalPrice: 0, loggedIn: false });
-    } else {
-        // 로그인한 경우 장바구니와 상품 정보를 조회
-        const query = `
-            SELECT Product.product_name, Product.price, Cart.quantity, Cart.product_id 
-            FROM cart AS Cart
-            JOIN product AS Product ON Cart.product_id = Product.product_id 
-            WHERE Cart.user_id = ?;
-        `;
+/*
+app.get('/cart', function(req, res){
+    const 아이디 = req.session.아이디;
 
-        conn.query(query, [user_id], function(err, rows) {
-            if (err) throw err;
+    const query = `
+        SELECT 상품.상품명, 상품.imagepath, 상품.가격, 장바구니.수량 
+        FROM 장바구니
+        JOIN 상품 ON 장바구니.상품번호 = 상품.상품번호 
+        WHERE 장바구니.아이디 = ?;
+    `;
 
-            // 총 가격 계산
-            const totalPrice = rows.reduce((sum, item) => sum + item.price * item.quantity, 0);
+    conn.query(query, [userId], function(err, rows) {
+        if (err) throw err;
 
-            // 장바구니 페이지로 데이터 전달
-            res.render('cart.ejs', { cartData: rows, totalPrice: totalPrice, loggedIn: true });
-        });
-    }
+        // 총 상품 금액 계산
+        const totalPrice = rows.reduce((sum, item) => sum + 상품.가격 * 장바구니.수량, 0);
+
+        // EJS 템플릿에 데이터 전달
+        res.render('cart.ejs', { data: rows, totalPrice: totalPrice });
+    });
 });
 
-// 장바구니 상품 수량 수정
-app.post('/cart/update/:product_id', function(req, res) {
-    const user_id = req.session.user_id; // 세션에서 user_id 가져옴
-    const { product_id } = req.params;
-    const { quantity } = req.body;
-
-    if (!user_id) {
-        return res.redirect('/login'); // 로그인하지 않은 경우 로그인 페이지로 리다이렉트
-    }
+// 상품 수량 수정 라우트
+app.post('/cart/update/:상품번호', (req, res) => {
+    const { 상품번호 } = req.params;
+    const { 수량 } = req.body;
+    const userId = req.session.userId;
 
     const query = `
         UPDATE cart SET quantity = ? WHERE user_id = ? AND product_id = ?;
     `;
 
-    conn.query(query, [quantity, user_id, product_id], function(err, result) {
+    db.query(query, [quantity, userId, productId], (err, result) => {
         if (err) throw err;
-
-        // 수량 수정 후 다시 장바구니 페이지로 리다이렉트
         res.redirect('/cart');
     });
 });
 
-// 장바구니에서 상품 삭제
-app.post('/cart/delete/:product_id', function(req, res) {
-    const user_id = req.session.user_id; // 세션에서 user_id 가져옴
-    const { product_id } = req.params;
-
-    if (!user_id) {
-        return res.redirect('/login'); // 로그인하지 않은 경우 로그인 페이지로 리다이렉트
-    }
+// 상품 삭제 라우트
+app.post('/cart/delete/:상품번호', (req, res) => {
+    const { 상품번호 } = req.params;
+    const userId = req.session.userId;
 
     const query = `
         DELETE FROM cart WHERE user_id = ? AND product_id = ?;
     `;
 
-    conn.query(query, [user_id, product_id], function(err, result) {
+    db.query(query, [userId, 상품번호], (err, result) => {
         if (err) throw err;
-
-        // 삭제 후 다시 장바구니 페이지로 리다이렉트
         res.redirect('/cart');
     });
 });
-
-
-// 장바구니에서 상품 삭제
-app.post('/cart/delete/:product_id', function(req, res) {
-    const user_id = req.session.user_id; // 세션에서 user_id 가져옴
-    const { product_id } = req.params;
-
-    if (!user_id) {
-        return res.redirect('/login'); // 로그인하지 않은 경우 로그인 페이지로 리다이렉트
-    }
-
-    const query = `
-        DELETE FROM cart WHERE user_id = ? AND product_id = ?;
-    `;
-
-    conn.query(query, [user_id, product_id], function(err, result) {
-        if (err) throw err;
-
-        // 삭제 후 다시 장바구니 페이지로 리다이렉트
-        res.redirect('/cart');
-    });
-});
-
+*/
 
 // 플랫폼 인증 ---------------------------------------------------------------------------------------------------------
 app.get('/facebook', passport.authenticate('facebook'));
@@ -363,7 +336,7 @@ app.get('/kakao/callback', passport.authenticate('kakao', {
 
 // 서버 작동 콘솔 -------------------------------------------------------------------------------------------------------
 app.listen(8888, '0.0.0.0', function(){
-    console.log("Server listening on port 8888...");
+    console.log("포트 8888으로 서버 대기중...");
     console.log("http://localhost:8888/");
     console.log("http://localhost:8888/main")
     console.log("http://192.168.0.71:8888/main")

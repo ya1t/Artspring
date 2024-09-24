@@ -27,29 +27,25 @@
                             <th>카테고리</th>
                             <th>상품종류</th>
                         </tr>
-                
                     </thead>
                     <tbody>
                         <% for(let i = 0; i < data.length; i++){ %>
                             <tr>         
-                              <td><%= data[i].상품번호 %></a></td>
-                              <td><%= data[i].상품명 %></td>
-                              <td><%= data[i].재고량 %></a></td>
-                              <td><%= data[i].가격 %></td>
-                              <td><%= data[i].카테고리 %></a></td>
-                              <td><%= data[i].상품종류 %></td>
+                              <td><%= data[i].product_id %></td> <!-- 상품번호 -->
+                              <td><%= data[i].product_name %></td> <!-- 상품명 -->
+                              <td><%= data[i].stock %></td> <!-- 재고량 -->
+                              <td><%= data[i].price %></td> <!-- 가격 -->
+                              <td><%= data[i].category %></td> <!-- 카테고리 -->
+                              <td><%= data[i].product_type %></td> <!-- 상품종류 -->
                             </tr>
                         <% } %>
-                      </tbody>
-                
+                    </tbody>
                 </table>
             </div>
-            
-
         </div>
     </div>
 
-        <%- include('footer.html') %>
+    <%- include('footer.html') %>
+
 </body>
 </html>
-    

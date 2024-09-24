@@ -32,7 +32,6 @@
         justify-content: center;
         align-items: center;
         margin: 0 auto;
-
     }
 
     .card img {
@@ -96,7 +95,7 @@
     }
 
     .get:hover {
-    background-position: 0;
+        background-position: 0;
     }
 
     .nav-tabs {
@@ -134,7 +133,6 @@
       font-weight: bold;
     }
 
-
   </style>
 
 </head>
@@ -160,12 +158,12 @@
         <div class="card-container">
             <% for(let i = 0; i < data.length; i++){ %>
             <div class="card">
-                <% if (data[i].imagepath) { %>
-                <img src="<%= data[i].imagepath %>">
+                <% if (data[i].image_path) { %>
+                <img src="<%= data[i].image_path %>">
                 <% } %>
                 <div class="card-content">
-                    <h2><%= data[i].상품명 %></h2>
-                    <p><%= data[i].가격 %> 원</p>
+                    <h2><%= data[i].product_name %></h2>
+                    <p><%= data[i].price %> 원</p>
                     <button class="btn get">구매버튼</button>
                 </div>
             </div>
@@ -174,7 +172,6 @@
     </div>
     <%- include('footer.html') %>
 </div>
-
 
 </body>
 </html>

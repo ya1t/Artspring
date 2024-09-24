@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>상품 등록</title>
+    <title>장바구니</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
@@ -15,42 +15,66 @@
 
     <div class="container">
         <div id="wrapper">
-            <div class="sectionCenter">
-                <h1>장바구니</h1>
-                <div class="notice">장바구니 진짜 어렵다<br>서버와 테이블 손봐서 잘 가져오기</div>
-            </div>
+            <div class="section">
+                <h1><center>장바구니</center></h1>
 
-            <div class="centerHorizontal">
-                <div class="cart-item">
-                    <img src="https://via.placeholder.com/100" alt="Product Image">
-                    <div class="cart-item-details">
-                        <h2>Product Name</h2>
-                        <p>Product description goes here.</p>
+                <% if (!cartData) { %> 
+                    <!-- 로그인하지 않은 경우 또는 cartData가 비어 있는 경우 -->
+                    <p>로그인하지 않았습니다. 장바구니에 담긴 상품이 없습니다.</p>
+                <% } else if (cartData.length > 0) { %>
+                    <!-- 장바구니에 상품이 있는 경우 -->
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>상품명</th>
+                                <th>가격</th>
+                                <th>수량</th>
+                                <th>총 가격</th>
+                                <th>수정</th>
+                                <th>삭제</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% let totalPrice = 0; %>
+                            <% for(let i = 0; i < cartData.length; i++){ %>
+                                <tr>         
+                                  <td><%= cartData[i].product_name %></td> <!-- 상품명 -->
+                                  <td><%= cartData[i].price %> 원</td> <!-- 가격 -->
+                                  <td>
+                                      <form action="/cart/update/<%= cartData[i].product_id %>" method="POST">
+                                          <input type="number" name="quantity" value="<%= cartData[i].quantity %>" min="1">
+                                          <button type="submit">수정</button>
+                                      </form>
+                                  </td> <!-- 수량 -->
+                                  <td><%= cartData[i].price * cartData[i].quantity %> 원</td> <!-- 총 가격 -->
+                                  <td>
+                                      <form action="/cart/delete/<%= cartData[i].product_id %>" method="POST">
+                                          <button type="submit">삭제</button>
+                                      </form>
+                                  </td>
+                                </tr>
+                                <% totalPrice += cartData[i].price * cartData[i].quantity; %>
+                            <% } %>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="3" style="text-align:right;">총 가격:</td>
+                                <td colspan="2"><%= totalPrice %> 원</td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                    <div class="checkout-button">
+                        <button onclick="location.href='/checkout'">결제하기</button>
                     </div>
-                    <div class="cart-item-price">$10.00</div>
-                    <div class="cart-item-quantity">
-                        <input type="number" value="1" min="1" max="10">
-                    </div>
-                    <div class="cart-item-total">$10.00</div>
-                </div>
-                <div class="cart-item">
-                    <img src="https://via.placeholder.com/100" alt="Product Image">
-                    <div class="cart-item-details">
-                        <h2>Product Name</h2>
-                        <p>Product description goes here.</p>
-                    </div>
-                    <div class="cart-item-price">$15.00</div>
-                    <div class="cart-item-quantity">
-                        <input type="number" value="1" min="1" max="10">
-                    </div>
-                    <div class="cart-item-total">$15.00</div>
-                </div>
-                <div class="total">Total: $25.00</div>
-                <button class="checkout-btn">Proceed to Checkout</button>
+                <% } else { %>
+                    <!-- 로그인했지만 장바구니에 상품이 없는 경우 -->
+                    <p>장바구니에 담긴 상품이 없습니다.</p>
+                <% } %>
             </div>
         </div>
     </div>
 
-        <%- include('footer.html') %>
+    <%- include('footer.html') %>
+
 </body>
 </html>
